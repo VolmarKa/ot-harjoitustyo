@@ -1,6 +1,6 @@
 **Tehtävä**
 
-Risteilyalus *MV AidAmira* ja toinen rahtialus ovat joutuneet **koronaviruskaranteeniin** Etelä-Afrikan *Kapkaupungin* edustalla, kertoo uutistoimisto *Reuters*. Matkustajalaiva *AidAmiralla* on 1 240 matkustajaa ja 486 miehistön jäsentä.
+*Viikko 1*
 
 [Linkki gitlogiin](https://github.com/VolmarKa/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
