@@ -1,0 +1,24 @@
+$ git log --stat|cat
+commit 355e4c3f6bdd7d43dfe6adaf7b9e0a5c389ee37f
+Author: Volmar Kaipainen <volkaipa@ad.helsinki.fi>
+Date:   Tue Mar 17 16:54:49 2020 +0200
+
+    muutoksia taas
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit d4843b0d10f02bdf0aa285140d98ec90919df213
+Author: Volmar Kaipainen <volkaipa@ad.helsinki.fi>
+Date:   Tue Mar 17 16:50:03 2020 +0200
+
+    muutoksia
+
+ eka.txt          | 19 +++++++++++++++++++
+ kolmas.txt       |  2 ++
+ stuff/kivaa.txt  |  1 +
+ tiedostoja/file1 |  0
+ tiedostoja/file2 |  0
+ tiedostoja/file3 |  0
+ 6 files changed, 22 insertions(+)
