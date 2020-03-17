@@ -1,4 +1,4 @@
-**Tehtävä**
+**Tehtävät**
 
 *Viikko 1*
 
