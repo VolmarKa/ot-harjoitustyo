@@ -14,6 +14,8 @@ Käyttäjä pystyy pelaamaan perinteistä klondike-pasianssia helpoimmalla vaike
   
 - pelipinoja- ja kortteja voi siirrellä hiiren avulla
 
+- pelin voittaa, kun pelikortit saa järejestettyä oikein loppupinoihin
+
 ## **Jatkokehitysideoita**
 
 Jos aika riittää, niin peliin voisi lisätä mm. seuraavia ominaisuuksia:
