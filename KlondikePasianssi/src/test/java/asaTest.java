@@ -14,9 +14,9 @@ import static org.junit.Assert.*;
  *
  * @author volma
  */
-public class UserTest {
+public class asaTest {
     
-    public UserTest() {
+    public asaTest() {
     }
     
 

@@ -1,9 +1,13 @@
 
 package klondikePasianssi;
 
+import klondikePasianssi.gui.UserInterface;
 
 public class Main {
+    
     public static void main(String[] args){
-        System.out.println("kivaa");
+       UserInterface.main(args);
     }
+    
+   
 }
