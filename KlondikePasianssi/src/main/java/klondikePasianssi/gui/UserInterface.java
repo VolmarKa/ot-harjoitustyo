@@ -32,10 +32,6 @@ public class UserInterface extends Application {
         mainPane.setGridLinesVisible(true);
 
         Deck deck = new Deck();
-        for (Card k : deck.getDeck()) {
-            System.out.println(k.toString());
-        }
-
         deck.shuffle();
 
         Scene mainScene = new Scene(mainPane, 1000, 600);
