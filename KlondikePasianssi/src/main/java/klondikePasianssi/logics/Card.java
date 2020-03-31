@@ -4,49 +4,48 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Card {
-
+public class Card extends Button {
+    
     public enum Suit {
         CLUBS, DIAMONDS, SPADES, HEARTS;
     }
-
-     
+    
     private final Suit suit;
     private final int rank;
-    private final Button card;
-    private CardImage image;
+    private final CardImage cardImage;
+    private boolean faceUp;
+    private final Image image;
 
+
+    /*kuvien numerot on järjestetty niin, että ne ovat 1-13, kuten jokaisen kortin
+    arvon kuuluu olla
+     */
     public Card(Suit suit, String imageName, int imageNumber) {
+        this.faceUp = false;
         this.suit = suit;
         this.rank = imageNumber;
-        this.card = new Button();
-        this.image = new CardImage();
-        this.card.setStyle("-fx-background-color: transparent");
-        
-        this.card.setGraphic(new ImageView(image.createImage(imageName, imageNumber)));
-    }
-        
-    public void effect(){
+        this.cardImage = new CardImage();
+        this.image = cardImage.createImage(imageName, imageNumber);
+        this.setStyle("-fx-background-color: transparent");
+        this.setGraphic(new ImageView(image));
         
     }
     
-
     public Suit getSuit() {
         return suit;
     }
     
-    public int getRank(){
+    public int getRank() {
         return this.rank;
     }
     
-    public Button getCard(){
-        return this.card;
+    public void setFaceUp() {
+        this.faceUp = true;
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         return getSuit() + " " + getRank();
     }
-    
     
 }
