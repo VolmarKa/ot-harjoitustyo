@@ -1,6 +1,8 @@
 package klondikePasianssi.logics;
 
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Card {
 
@@ -8,40 +10,42 @@ public class Card {
         CLUBS, DIAMONDS, SPADES, HEARTS;
     }
 
-    public enum Rank {
-        
-        ACE(1), DEUCE(2), THREE(3), FOUR(4), 
-        FIVE(5), SIX(6), SEVEN(7), EIGHT(8), 
-        NINE(9), TEN(10), JACK(11), QUEEN(12), 
-        KING(13);
-        
-        private final int rankValue;
-            
-        private Rank(int rankValue){
-            this.rankValue=rankValue;
-        }
-        
-        public int getRankValue(){
-            return this.rankValue;
-        }
-    }
      
     private final Suit suit;
-    private final Rank rank;
-    private Image cardImage;
+    private final int rank;
+    private final Button card;
+    private CardImage image;
 
-    public Card(Suit suit, Rank rank, Image image) {
+    public Card(Suit suit, String imageName, int imageNumber) {
         this.suit = suit;
-        this.rank = rank;
-        this.cardImage = image;
+        this.rank = imageNumber;
+        this.card = new Button();
+        this.image = new CardImage();
+        this.card.setStyle("-fx-background-color: transparent");
+        
+        this.card.setGraphic(new ImageView(image.createImage(imageName, imageNumber)));
     }
+        
+    public void effect(){
+        
+    }
+    
 
     public Suit getSuit() {
         return suit;
     }
     
-    public Rank getRank(){
+    public int getRank(){
         return this.rank;
+    }
+    
+    public Button getCard(){
+        return this.card;
+    }
+    
+    @Override
+    public String toString(){
+        return getSuit() + " " + getRank();
     }
     
     
