@@ -11,8 +11,9 @@ Käyttäjä pystyy pelaamaan perinteistä klondike-pasianssia helpoimmalla vaike
 - uusia kortteja nostetaan pakkaa klikkaamalla
   - kortteja nostetaan yksi kerrallaan
   - pakkaa voi kierrättää loputtomasti
-  
+
 - pelipinoja- ja kortteja voi siirrellä hiiren avulla
+  - kortteja ja pinoja voi laittaa päällekkäin
 
 - pelin voittaa, kun pelikortit saa järjestettyä oikein loppupinoihin
 
