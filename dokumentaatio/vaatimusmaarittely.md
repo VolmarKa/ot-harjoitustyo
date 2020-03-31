@@ -7,7 +7,7 @@ Käyttäjä pystyy pelaamaan perinteistä klondike-pasianssia helpoimmalla vaike
 ## **Perusversion tarjomat tomminnallisuudet**
 
 - visuaaliset ominaisuudet
-  - pöytään jaetaan seitsemän pelipinoa, joissa on 1-7 korttia
+  - keskelle pöytää jaetaan seitsemän pelipinoa, joissa on 1-7 korttia
   - kortteja kerätään oikeassa yläkulmassa sijaitseviin pinoihin 
   - pakka sijaitsee vasemmassa yläkulmassa
   
