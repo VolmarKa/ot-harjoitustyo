@@ -18,4 +18,8 @@ public class CardImage {
         return createImage("back", 1);
     }
 
+    public Image bottomImage() {
+        return createImage("bottom", 1);
+    }
+
 }

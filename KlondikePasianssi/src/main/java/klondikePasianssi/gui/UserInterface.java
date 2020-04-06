@@ -1,6 +1,5 @@
 package klondikePasianssi.gui;
 
-import klondikePasianssi.logics.Card;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -16,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import klondikePasianssi.logics.Deck;
 import klondikePasianssi.logics.UpperLeftPile;
+import klondikePasianssi.logics.UpperRightPiles;
 
 public class UserInterface extends Application {
 
@@ -28,13 +28,16 @@ public class UserInterface extends Application {
         mainPane.setBorder(new Border(new BorderStroke(Color.BURLYWOOD,
                 BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(7, 7, 7, 7))));
 
-        mainPane.add(new UpperLeftPile(), 1, 0, 1, 1);
-        mainPane.setGridLinesVisible(true);
-
         Deck deck = new Deck();
-        deck.shuffle();
-
-        Scene mainScene = new Scene(mainPane, 1000, 600);
+        UpperLeftPile upperleft = new UpperLeftPile(deck.dealUpperPile());
+        UpperRightPiles upperright = new UpperRightPiles();
+        
+        mainPane.add(upperleft, 0, 0, 4, 2);
+        mainPane.setHgap(180);
+        mainPane.add(upperright, 3, 0, 1, 1);
+        //mainPane.setGridLinesVisible(true);
+        
+        Scene mainScene = new Scene(mainPane, 950, 500);
         primaryStage.setScene(mainScene);
         primaryStage.show();
     }

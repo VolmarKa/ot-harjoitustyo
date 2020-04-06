@@ -5,14 +5,10 @@ import java.util.Stack;
 
 public class Deck {
 
-    private int b;
-    private int i;
-    private Stack<Card> deck;
+    private final Stack<Card> deck;
 
     public Deck() {
         this.deck = new Stack<>();
-        this.i = 0;
-        this.b = 1;
 
         createWholeSuit("c", Card.Suit.CLUBS);
         createWholeSuit("s", Card.Suit.SPADES);
@@ -28,6 +24,23 @@ public class Deck {
 
     }
 
+    //24 korttipinoon ja yht 28 pinoihin pöydälle
+    public Stack<Card> dealUpperPile() {
+        Stack<Card> upperPile = new Stack<>();
+        for (int i = 1; i <= 24; i++) {
+            upperPile.push(this.deck.pop());
+        }
+        return upperPile;
+    }
+
+
+    /*
+    public Card pop(){
+        if(!this.deck.isEmpty()){
+            return this.deck.pop();
+        }
+        return
+    } */
     public void shuffle() {
         Collections.shuffle(this.deck);
     }
