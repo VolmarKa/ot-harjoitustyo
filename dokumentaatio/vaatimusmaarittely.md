@@ -9,11 +9,11 @@ Käyttäjä pystyy pelaamaan perinteistä klondike-pasianssia helpoimmalla vaike
 - visuaaliset ominaisuudet
   - keskelle pöytää jaetaan seitsemän pelipinoa, joissa on 1-7 korttia
   - kortteja kerätään oikeassa yläkulmassa sijaitseviin pinoihin 
-  - pakka sijaitsee vasemmassa yläkulmassa
+  - pakka sijaitsee vasemmassa yläkulmassa  ✔
   
-- uusia kortteja nostetaan pakkaa klikkaamalla
-  - kortteja nostetaan yksi kerrallaan
-  - pakkaa voi kierrättää loputtomasti
+- uusia kortteja nostetaan pakkaa klikkaamalla  ✔
+  - kortteja nostetaan yksi kerrallaan  ✔
+  - pakkaa voi kierrättää loputtomasti  ✔
 
 - pelipinoja- ja kortteja voi siirrellä hiiren avulla
   - kortteja ja pinoja voi laittaa päällekkäin
