@@ -9,6 +9,8 @@
 
 [Tuntikirjanpito](https://github.com/VolmarKa/otmPasianssi/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[Arkkitehtuurikuvaus](https://github.com/VolmarKa/otmPasianssi/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 ## **Komentorivitoiminnot**
 
 ### Testaus
