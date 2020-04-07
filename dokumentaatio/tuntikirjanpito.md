@@ -10,3 +10,4 @@
 | 5.4   | 3.5  | Pakan klikkaamiseen liittyvät toiminnot  |
 | 6.4   | 4    | Pakan toiminnan viimeistely  |
 | 7.4   | 4    | Yläkulman pinojen luomisen aloittaminen  |
+| yht   | 28.5 |   |
