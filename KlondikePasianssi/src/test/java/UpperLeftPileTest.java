@@ -28,4 +28,10 @@ public class UpperLeftPileTest {
         this.upperLeft = new UpperLeftPile(deck.dealUpperPile());
     }
 
+    //Gives error without this test
+    @Test
+    public void test() {
+
+    }
+
 }

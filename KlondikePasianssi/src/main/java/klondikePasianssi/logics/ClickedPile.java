@@ -3,7 +3,6 @@ package klondikePasianssi.logics;
 import java.util.Stack;
 import javafx.scene.layout.StackPane;
 import klondikePasianssi.gui.Card;
-import klondikePasianssi.logics.CardProperties;
 
 public class ClickedPile extends StackPane {
 
@@ -12,7 +11,7 @@ public class ClickedPile extends StackPane {
     private int pileSize;
 
     public ClickedPile() {
-        
+
     }
 
     public void updateStack() {
