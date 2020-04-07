@@ -1,4 +1,7 @@
-# **Sovelluslogiikka**
+# **Arkkitehtuurikuvaus**
+
+
+## **Sovelluslogiikka**
 
 
 Ohjelman osien suhdetta kuvaava luokka/pakkauskaavio:
