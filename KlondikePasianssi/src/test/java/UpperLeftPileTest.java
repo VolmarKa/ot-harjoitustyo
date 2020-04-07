@@ -1,5 +1,7 @@
 
 import de.saxsys.javafx.test.JfxRunner;
+import java.awt.event.MouseEvent;
+import java.util.Stack;
 import klondikePasianssi.gui.Card;
 import klondikePasianssi.logics.Deck;
 import org.junit.After;
@@ -8,28 +10,22 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
+import klondikePasianssi.logics.UpperLeftPile;
 
 @RunWith(JfxRunner.class)
-public class DeckTest {
+public class UpperLeftPileTest {
 
-    private Deck Deck;
+    private UpperLeftPile upperLeft;
+    private Deck deck;
 
-    public DeckTest() {
+    public UpperLeftPileTest() {
+
     }
 
     @Before
     public void setUp() {
-        this.Deck = new Deck();
+        this.deck = new Deck();
+        this.upperLeft = new UpperLeftPile(deck.dealUpperPile());
     }
 
-    @Test
-    public void createdDeckHasTheRightSize() {
-        assertEquals(52, this.Deck.getDeck().size());
-
-    }
-
-    @Test
-    public void dealUpperPileHasTheRightSize() {
-        assertEquals(24, this.Deck.dealUpperPile().size());
-    }
 }

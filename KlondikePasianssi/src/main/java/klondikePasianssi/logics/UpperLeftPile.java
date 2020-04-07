@@ -4,14 +4,16 @@ import java.util.Stack;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import klondikePasianssi.gui.Card;
+import klondikePasianssi.gui.CardImage;
 
 public class UpperLeftPile extends HBox {
 
     private int i;
     private int deckSize;
     private final CardImage cardImage = new CardImage();
-    private final ImageView IMA1 = new ImageView(cardImage.backOfTheCard());
-    private final ImageView IMA2 = new ImageView(cardImage.bottomImage());
+    private final ImageView ima1 = new ImageView(cardImage.backOfTheCard());
+    private final ImageView ima2 = new ImageView(cardImage.bottomImage());
     private final Button card = new Button();
     private final ClickedPile clickedPile = new ClickedPile();
     private Stack<Card> upperPile;
@@ -30,20 +32,14 @@ public class UpperLeftPile extends HBox {
 
     public void checkIndex() {
         if (this.i == deckSize) {
-            this.card.setGraphic(IMA2);
+            this.card.setGraphic(ima2);
         }
         if (this.i == 1) {
-            this.card.setGraphic(IMA1);
+            this.card.setGraphic(ima1);
         }
     }
 
-    public void printCards() {
-        for (Card k : this.upperPile) {
-            System.out.println(k.toString());
-        }
-    }
-
-    private void pileClicked() {
+    public final void pileClicked() {
         card.setOnMouseClicked(event -> {
             checkIndex();
 
@@ -63,6 +59,10 @@ public class UpperLeftPile extends HBox {
                 checkIndex();
             }
         });
+    }
+
+    public Button getCard() {
+        return this.card;
     }
 
     private void updateDeckSize() {

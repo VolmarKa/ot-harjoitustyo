@@ -1,4 +1,4 @@
-package klondikePasianssi.logics;
+package klondikePasianssi.gui;
 
 import javafx.scene.image.Image;
 

@@ -6,4 +6,5 @@
 
 <suppressions>
     <suppress files="klondikePasianssi.gui.UserInterface.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="klondikePasianssi.Main.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

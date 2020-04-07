@@ -31,12 +31,12 @@ public class UserInterface extends Application {
         Deck deck = new Deck();
         UpperLeftPile upperleft = new UpperLeftPile(deck.dealUpperPile());
         UpperRightPiles upperright = new UpperRightPiles();
-        
+
         mainPane.add(upperleft, 0, 0, 4, 2);
+        mainPane.add(upperright, 3, 0, 2, 1);
         mainPane.setHgap(180);
-        mainPane.add(upperright, 3, 0, 1, 1);
+
         //mainPane.setGridLinesVisible(true);
-        
         Scene mainScene = new Scene(mainPane, 950, 500);
         primaryStage.setScene(mainScene);
         primaryStage.show();
