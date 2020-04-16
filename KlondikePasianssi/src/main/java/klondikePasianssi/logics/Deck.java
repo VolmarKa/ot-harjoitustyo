@@ -24,7 +24,12 @@ public class Deck {
 
     }
 
-    //24 korttipinoon ja yht 28 pinoihin pöydälle
+    public void setEveryFaceDown() {
+        for (Card card : this.deck) {
+            card.getCardProperties().setFaceDown();
+        }
+    }
+
     public Stack<Card> dealUpperPile() {
 
         Stack<Card> upperPile = new Stack<>();

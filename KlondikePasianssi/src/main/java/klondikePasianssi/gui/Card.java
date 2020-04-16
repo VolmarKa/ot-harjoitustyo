@@ -23,8 +23,12 @@ public final class Card extends Button {
         this.rank = imageNumber;
         this.image = cardImage.createImage(imageName, imageNumber);
         cardproperties.init(this.image);
-        cardproperties.effect();
-        cardproperties.changeSide(this.image);
+        //cardproperties.effect();
+
+    }
+
+    public Image getImage() {
+        return this.image;
     }
 
     public Suit getSuit() {
@@ -33,6 +37,10 @@ public final class Card extends Button {
 
     public int getRank() {
         return this.rank;
+    }
+
+    public void setFaceDown() {
+        this.faceUp = false;
     }
 
     public void setFaceUp() {
