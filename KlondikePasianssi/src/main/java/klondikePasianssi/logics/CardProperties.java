@@ -7,17 +7,20 @@ import klondikePasianssi.gui.CardImage;
 
 public class CardProperties {
 
-    protected final String idleButton = "-fx-background-color: transparent; "
+    private final String idleButton = "-fx-background-color: transparent; "
             + "-fx-padding: 5, 5, 5, 5;";
-    protected final String enteredButton = "-fx-background-color: transparent; "
+    private final String enteredButton = "-fx-background-color: transparent; "
             + "-fx-padding: 6, 4, 4, 6;";
     private Card card;
     private final Image backImage;
     private final CardImage cardImage = new CardImage();
+    private Movement mv;
 
     public CardProperties(Card card) {
         this.card = card;
         this.backImage = cardImage.backOfTheCard();
+        this.mv = new Movement(this.card);
+
     }
 
     public void init(Image image) {
@@ -58,13 +61,16 @@ public class CardProperties {
             });
         }
     }
-    /*
+
+    /*public void makemovable(){
+        this.mv = new Movement(this);
+    }*/
+ /*
     public void move(Scene s){
         card.setOnMousePressed(e -> {
             
         });
     }
-    
-    
+  
      */
 }

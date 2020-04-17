@@ -48,6 +48,7 @@ public class MiddlePileManager {
         }
     }
 
+    //Käytetään kun halutaan kääntää ylin pinossa.
     private void changeSideUpdate() {
 
         for (int i = 0; i <= 6; i++) {

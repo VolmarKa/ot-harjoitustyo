@@ -1,22 +1,25 @@
 package klondikePasianssi.logics;
 
-import java.util.Stack;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import klondikePasianssi.gui.Card;
 import klondikePasianssi.gui.CardImage;
 import klondikePasianssi.gui.UpperRightPile;
 
 public class UpperRightPileManager {
 
-    private final CardImage cardImage = new CardImage();
-    private Stack<Card> pile = new Stack<>();
-    private UpperRightPile upper;
+    private UpperRightPile[] piles = new UpperRightPile[4];
+    private CardImage cardImage = new CardImage();
 
-    public UpperRightPileManager(UpperRightPile upper, String imageName, int imageNumber) {
-        this.upper = upper;
-        this.upper.getChildren().add(createBottomCard(imageName, imageNumber));
+    public UpperRightPileManager() {
+        init();
+    }
 
+    private void init() {
+
+        for (int i = 0; i <= 3; i++) {
+            this.piles[i] = new UpperRightPile();
+            this.piles[i].getChildren().add(createBottomCard("b", i + 1));
+        }
     }
 
     public final Button createBottomCard(String imageName, int imageNumber) {
@@ -25,5 +28,9 @@ public class UpperRightPileManager {
         button.setStyle("-fx-background-color: transparent;");
 
         return button;
+    }
+
+    public UpperRightPile[] getPiles() {
+        return this.piles;
     }
 }

@@ -60,6 +60,13 @@ public class UpperLeftPile extends HBox {
             }
         });
     }
+    
+    /*public void makeC(){
+        for(Card c : this.upperPile){
+            System.out.println(c.getScene());
+            c.getCardProperties().makemovable();
+        }
+    }*/
 
     public Button getCard() {
         return this.card;

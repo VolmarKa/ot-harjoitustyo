@@ -1,5 +1,6 @@
 package klondikePasianssi.gui;
 
+import java.util.Stack;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 import klondikePasianssi.logics.Deck;
 import klondikePasianssi.logics.MiddlePileManager;
 import klondikePasianssi.logics.UpperLeftPile;
+import klondikePasianssi.logics.UpperRightPileManager;
 
 public class UserInterface extends Application {
 
@@ -29,19 +31,14 @@ public class UserInterface extends Application {
                 BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(7, 7, 7, 7))));
 
         Deck deck = new Deck();
-        UpperLeftPile upperleft = new UpperLeftPile(deck.dealUpperPile());
-        //UpperRightPiles upperright = new UpperRightPiles();
-
-        UpperRightPile c = new UpperRightPile("cPile", 1);
-        UpperRightPile s = new UpperRightPile("sPile", 1);
-        UpperRightPile d = new UpperRightPile("dPile", 1);
-        UpperRightPile h = new UpperRightPile("hPile", 1);
+        Stack<Card> uP = deck.dealUpperPile();
+        UpperLeftPile upperleft = new UpperLeftPile(uP);
+        UpperRightPileManager upperRight = new UpperRightPileManager();
 
         HBox UpperRightPiles = new HBox();
-        UpperRightPiles.getChildren().addAll(c, s, d, h);
+        UpperRightPiles.getChildren().addAll(upperRight.getPiles());
         mainPane.add(upperleft, 0, 0, 4, 2);
         mainPane.add(UpperRightPiles, 3, 0, 2, 1);
-        //mainPane.add(upperright, 3, 0, 2, 1);
         mainPane.setHgap(10);
         HBox middlePiles = new HBox();
         MiddlePileManager a = new MiddlePileManager(deck);
