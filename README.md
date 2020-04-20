@@ -1,6 +1,6 @@
 # **Klondike-pasianssi**
 
-
+Sovellus on klondike-pasianssi, jota käyttäjät pysytyvät pelaamaan helpoimmalla vaikeusasteella.
 
 
 ## **Dokumentaatio**
@@ -10,6 +10,10 @@
 [Tuntikirjanpito](https://github.com/VolmarKa/otmPasianssi/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 [Arkkitehtuurikuvaus](https://github.com/VolmarKa/otmPasianssi/blob/master/dokumentaatio/arkkitehtuuri.md)
+
+## **Releaset**
+
+[Viikko 5](https://github.com/VolmarKa/otmPasianssi/releases/tag/viikko5)
 
 ## **Komentorivitoiminnot**
 
@@ -25,6 +29,14 @@ Testikattavuusraportti luodaan komennolla
 ```
 mvn jacoco:report
 ```
+### Suoritettavan jarin generointi
+
+komento
+
+```
+mvn package
+```
+generoi hakemistoon target suoritettavan jar-tiedoston KlondikePasianssi-1.0-SNAPSHOT.jar
 
 ### Checkstyle
 
