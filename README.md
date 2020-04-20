@@ -51,5 +51,5 @@ Tiedoston [checkstyle.xml](https://github.com/VolmarKa/otmPasianssi/blob/master/
 Ohjelman voi suorittaa komennolla
 
 ```
- mvn compile exec:java -Dexec.mainClass=klondikePasianssi.Main
+ mvn compile exec:java -Dexec.mainClass=klondikepasianssi.Main
 ```
