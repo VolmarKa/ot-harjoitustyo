@@ -26,6 +26,14 @@ public final class Card extends Button {
         //cardproperties.effect();
 
     }
+    
+    public Card(Suit suit, Image imagee, int rankk){
+        cardproperties = new CardProperties(this);
+        this.suit = suit;
+        this.image = imagee;
+        this.rank = rankk;
+        cardproperties.init(this.image);
+    }
 
     public Image getImage() {
         return this.image;
@@ -58,6 +66,10 @@ public final class Card extends Button {
 
     public CardProperties getCardProperties() {
         return this.cardproperties;
+    }
+    
+    public void sas(Card card){
+        
     }
 
 }

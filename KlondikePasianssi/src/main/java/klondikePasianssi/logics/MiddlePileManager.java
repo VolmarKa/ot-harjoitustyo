@@ -25,15 +25,14 @@ public class MiddlePileManager {
         this.b = 1;
         for (int a = 0; a <= 6; a++) {
             for (int i = 1; i <= b; i++) {
-                //System.out.println(deck.getDeck().peek());
+
                 Card card = deck.getDeck().pop();
                 this.y = card.getTranslateY();
                 this.piles[a].getPile().push(card);
-                System.out.println(this.piles[a].getPile().toString());
+                //System.out.println(this.piles[a].getPile().toString());
                 this.piles[a].getChildren().add(card);
                 card.setTranslateY(y + i * 10);
 
-                //System.out.println("Onnistui" + b);
             }
             this.b++;
         }
@@ -48,12 +47,11 @@ public class MiddlePileManager {
         }
     }
 
-    //Käytetään kun halutaan kääntää ylin pinossa.
     private void changeSideUpdate() {
 
         for (int i = 0; i <= 6; i++) {
             this.piles[i].getPile().peek().getCardProperties().changeSide();
-            //System.out.println(this.piles[i].getPile().peek().getFaceUp());
+
         }
     }
 

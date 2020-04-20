@@ -3,6 +3,7 @@ package klondikePasianssi.logics;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import klondikePasianssi.gui.Card;
+import klondikePasianssi.gui.Card.Suit;
 import klondikePasianssi.gui.CardImage;
 
 public class CardProperties {
@@ -62,15 +63,21 @@ public class CardProperties {
         }
     }
 
-    /*public void makemovable(){
-        this.mv = new Movement(this);
-    }*/
- /*
-    public void move(Scene s){
-        card.setOnMousePressed(e -> {
-            
-        });
+    public Suit checkSuit(String a) {
+        if (a.equals("CLUBS")) {
+            return Suit.CLUBS;
+        }
+
+        if (a.equals("SPADES")) {
+            return Suit.SPADES;
+        }
+
+        if (a.equals("DIAMONDS")) {
+            return Suit.DIAMONDS;
+
+        } else {
+            return Suit.HEARTS;
+        }
     }
-  
-     */
+
 }
