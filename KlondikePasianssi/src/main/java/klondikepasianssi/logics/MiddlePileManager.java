@@ -47,7 +47,7 @@ public class MiddlePileManager {
         }
     }
 
-    private void changeSideUpdate() {
+    public void changeSideUpdate() {
 
         for (int i = 0; i <= 6; i++) {
             this.piles[i].getPile().peek().getCardProperties().changeSide();

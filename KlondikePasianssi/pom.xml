@@ -49,7 +49,7 @@
                 <version>0.8.3</version>
                 <configuration>
                     <excludes>
-                        <exclude>klondikePasianssi/gui/*</exclude>
+                        <exclude>klondikepasianssi/gui/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
