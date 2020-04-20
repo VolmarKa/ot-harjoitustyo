@@ -10,4 +10,8 @@
 | 5.4   | 3.5  | Pakan klikkaamiseen liittyvät toiminnot  |
 | 6.4   | 4    | Pakan toiminnan viimeistely  |
 | 7.4   | 4    | Yläkulman pinojen luomisen aloittaminen  |
-| yht   | 28.5 |   |
+| 17.4  | 3    | Yläkulman pinojen luominen  |
+| 18.4  | 3    | Keskimmäisten pinojen aloittaminen  |
+| 19.4  | 3    | Keskimmäisten pinojen luominen ja korttien liikuttelun mahdollistamisen aloittaminen |
+| 20.4  | 3    | Korttien liikuttamisen työstäminen  |
+| yht   | 40.5 |   |
