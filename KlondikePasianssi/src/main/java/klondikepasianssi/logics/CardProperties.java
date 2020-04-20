@@ -1,10 +1,10 @@
-package klondikePasianssi.logics;
+package klondikepasianssi.logics;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import klondikePasianssi.gui.Card;
-import klondikePasianssi.gui.Card.Suit;
-import klondikePasianssi.gui.CardImage;
+import klondikepasianssi.gui.Card;
+import klondikepasianssi.gui.Card.Suit;
+import klondikepasianssi.gui.CardImage;
 
 public class CardProperties {
 

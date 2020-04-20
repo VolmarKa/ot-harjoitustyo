@@ -1,8 +1,8 @@
-package klondikePasianssi.logics;
+package klondikepasianssi.logics;
 
 import java.util.Stack;
-import klondikePasianssi.gui.Card;
-import klondikePasianssi.gui.MiddlePileView;
+import klondikepasianssi.gui.Card;
+import klondikepasianssi.gui.MiddlePileView;
 
 public class MiddlePile extends Stack<Card> {
 

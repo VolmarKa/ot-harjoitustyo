@@ -1,9 +1,9 @@
-package klondikePasianssi.logics;
+package klondikepasianssi.logics;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import klondikePasianssi.gui.CardImage;
-import klondikePasianssi.gui.UpperRightPile;
+import klondikepasianssi.gui.CardImage;
+import klondikepasianssi.gui.UpperRightPile;
 
 public class UpperRightPileManager {
 

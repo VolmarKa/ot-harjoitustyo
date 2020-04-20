@@ -1,11 +1,11 @@
-package klondikePasianssi.logics;
+package klondikepasianssi.logics;
 
 import java.util.Stack;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import klondikePasianssi.gui.Card;
-import klondikePasianssi.gui.CardImage;
+import klondikepasianssi.gui.Card;
+import klondikepasianssi.gui.CardImage;
 
 public class UpperLeftPile extends HBox {
 

@@ -1,4 +1,4 @@
-package klondikePasianssi.gui;
+package klondikepasianssi.gui;
 
 import javafx.scene.layout.StackPane;
 

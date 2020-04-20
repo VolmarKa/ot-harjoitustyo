@@ -1,7 +1,7 @@
-package klondikePasianssi.logics;
+package klondikepasianssi.logics;
 
-import klondikePasianssi.gui.Card;
-import klondikePasianssi.gui.MiddlePileView;
+import klondikepasianssi.gui.Card;
+import klondikepasianssi.gui.MiddlePileView;
 
 public class MiddlePileManager {
 

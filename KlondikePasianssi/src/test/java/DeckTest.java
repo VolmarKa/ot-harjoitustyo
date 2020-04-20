@@ -1,7 +1,7 @@
 
 import de.saxsys.javafx.test.JfxRunner;
-import klondikePasianssi.gui.Card;
-import klondikePasianssi.logics.Deck;
+import klondikepasianssi.gui.Card;
+import klondikepasianssi.logics.Deck;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;

@@ -1,7 +1,7 @@
-package klondikePasianssi.gui;
+package klondikepasianssi.gui;
 
 import javafx.scene.layout.StackPane;
-import klondikePasianssi.logics.MiddlePile;
+import klondikepasianssi.logics.MiddlePile;
 
 public class MiddlePileView extends StackPane {
 

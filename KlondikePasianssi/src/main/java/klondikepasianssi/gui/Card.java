@@ -1,6 +1,6 @@
-package klondikePasianssi.gui;
+package klondikepasianssi.gui;
 
-import klondikePasianssi.logics.*;
+import klondikepasianssi.logics.CardProperties;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 
@@ -26,8 +26,8 @@ public final class Card extends Button {
         //cardproperties.effect();
 
     }
-    
-    public Card(Suit suit, Image imagee, int rankk){
+
+    public Card(Suit suit, Image imagee, int rankk) {
         cardproperties = new CardProperties(this);
         this.suit = suit;
         this.image = imagee;
@@ -67,9 +67,9 @@ public final class Card extends Button {
     public CardProperties getCardProperties() {
         return this.cardproperties;
     }
-    
-    public void sas(Card card){
-        
+
+    public void sas(Card card) {
+
     }
 
 }

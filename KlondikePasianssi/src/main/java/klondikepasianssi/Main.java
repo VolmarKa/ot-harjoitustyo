@@ -1,6 +1,6 @@
-package klondikePasianssi;
+package klondikepasianssi;
 
-import klondikePasianssi.gui.UserInterface;
+import klondikepasianssi.gui.UserInterface;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package klondikePasianssi.gui;
+package klondikepasianssi.gui;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;

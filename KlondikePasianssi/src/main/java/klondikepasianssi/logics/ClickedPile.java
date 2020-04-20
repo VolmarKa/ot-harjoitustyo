@@ -1,8 +1,8 @@
-package klondikePasianssi.logics;
+package klondikepasianssi.logics;
 
 import java.util.Stack;
 import javafx.scene.layout.StackPane;
-import klondikePasianssi.gui.Card;
+import klondikepasianssi.gui.Card;
 
 public class ClickedPile extends StackPane {
 

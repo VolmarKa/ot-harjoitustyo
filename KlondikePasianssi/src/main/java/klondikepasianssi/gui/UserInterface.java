@@ -1,4 +1,4 @@
-package klondikePasianssi.gui;
+package klondikepasianssi.gui;
 
 import java.util.Stack;
 import javafx.application.Application;
@@ -15,10 +15,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import klondikePasianssi.logics.Deck;
-import klondikePasianssi.logics.MiddlePileManager;
-import klondikePasianssi.logics.UpperLeftPile;
-import klondikePasianssi.logics.UpperRightPileManager;
+import klondikepasianssi.logics.Deck;
+import klondikepasianssi.logics.MiddlePileManager;
+import klondikepasianssi.logics.UpperLeftPile;
+import klondikepasianssi.logics.UpperRightPileManager;
 
 public class UserInterface extends Application {
 

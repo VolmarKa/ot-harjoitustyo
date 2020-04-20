@@ -1,8 +1,8 @@
-package klondikePasianssi.logics;
+package klondikepasianssi.logics;
 
 import java.util.Collections;
 import java.util.Stack;
-import klondikePasianssi.gui.Card;
+import klondikepasianssi.gui.Card;
 
 public class Deck {
 
