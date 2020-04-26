@@ -12,7 +12,7 @@ public class CardProperties {
             + "-fx-padding: 5, 5, 5, 5;";
     private final String enteredButton = "-fx-background-color: transparent; "
             + "-fx-padding: 6, 4, 4, 6;";
-    private Card card;
+    private final Card card;
     private final Image backImage;
     private final CardImage cardImage = new CardImage();
     private Movement mv;
@@ -20,7 +20,7 @@ public class CardProperties {
     public CardProperties(Card card) {
         this.card = card;
         this.backImage = cardImage.backOfTheCard();
-        this.mv = new Movement(this.card);
+        //this.mv = new Movement(this.card);
 
     }
 
@@ -78,6 +78,10 @@ public class CardProperties {
         } else {
             return Suit.HEARTS;
         }
+    }
+    
+    public void makeMovable(MiddlePileManager manager){
+        this.mv = new Movement(this.card, manager);
     }
 
 }

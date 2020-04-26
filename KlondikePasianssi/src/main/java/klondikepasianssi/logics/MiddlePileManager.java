@@ -1,6 +1,7 @@
 package klondikepasianssi.logics;
 
 import klondikepasianssi.gui.Card;
+import klondikepasianssi.gui.CardImage;
 import klondikepasianssi.gui.MiddlePileView;
 
 public class MiddlePileManager {
@@ -10,6 +11,9 @@ public class MiddlePileManager {
     private final MiddlePileView[] piles = new MiddlePileView[7];
 
     public MiddlePileManager(Deck deck) {
+        for (Card k : deck.getDeck()) {
+            k.getCardProperties().makeMovable(this);
+        }
         init();
         dealCards(deck);
     }
@@ -21,9 +25,11 @@ public class MiddlePileManager {
     }
 
     private void dealCards(Deck deck) {
+        CardImage c = new CardImage();
         deck.setEveryFaceDown();
         this.b = 1;
         for (int a = 0; a <= 6; a++) {
+            this.piles[a].getChildren().add(c.createButton("bottom", 1));
             for (int i = 1; i <= b; i++) {
 
                 Card card = deck.getDeck().pop();
@@ -46,16 +52,18 @@ public class MiddlePileManager {
             this.piles[i].getPile().peek().getCardProperties().setFaceUp();
         }
     }
-
+    //ei toimi jos pakka on "tyhjä"
     public void changeSideUpdate() {
 
         for (int i = 0; i <= 6; i++) {
-            this.piles[i].getPile().peek().getCardProperties().changeSide();
-
+            if (!this.piles[i].getChildren().isEmpty()) {
+                this.piles[i].getPile().peek().getCardProperties().changeSide();
+            }
         }
     }
 
     public MiddlePileView[] getPiles() {
         return this.piles;
     }
+
 }

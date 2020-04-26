@@ -11,10 +11,13 @@ import klondikepasianssi.gui.Card.Suit;
 
 public class Movement {
 
+    private int index;
     private final Card card;
+    private MiddlePileManager manager;
 
-    public Movement(Card card) {
+    public Movement(Card card, MiddlePileManager m) {
         this.card = card;
+        this.manager = m;
 
         this.card.setOnDragDetected(e -> {
             dragDetected(e);
@@ -35,7 +38,7 @@ public class Movement {
 
     private void dragDetected(MouseEvent event) {
 
-        if (card == null) {
+        if (card == null || !card.getFaceUp()) {
             event.consume();
             return;
         }
@@ -65,15 +68,26 @@ public class Movement {
 
         Dragboard db = event.getDragboard();
 
-        if (db.hasString() && db.hasImage() && event.getGestureTarget().getClass() == Card.class) {
+        if (db.hasString() && db.hasImage()) {
 
             String[] properties = db.getString().split(" ");
             Image image = db.getImage();
             Suit suit = card.getCardProperties().checkSuit(properties[0]);
             Card cardd = new Card(suit, image, Integer.valueOf(properties[1]));
-            System.out.println(cardd.toString());
-            System.out.println(event.getGestureTarget().toString());
+            cardd.getCardProperties().makeMovable(manager);
+            for (int i = 0; i <= 6; i++) {
+                int size = manager.getPiles()[i].getPile().size();
+                for (int a = 0; a <= size - 1; a++) {
+                    if (manager.getPiles()[i].getPile().get(a).toString().equals(event.
+                            getGestureTarget().toString())) {
+                        this.index = i;
 
+                    }
+                }
+            }
+            if (!cardd.toString().equals(event.getGestureTarget().toString())) {
+                deleteAndAddOriginalCard(cardd);
+            }
             event.setDropCompleted(true);
         } else {
             event.setDropCompleted(false);
@@ -87,9 +101,28 @@ public class Movement {
         TransferMode modeUsed = e.getTransferMode();
 
         if (modeUsed == TransferMode.MOVE) {
-            System.out.println("done    ");
+
+            e.consume();
         }
-        e.consume();
     }
 
+    private void deleteAndAddOriginalCard(Card card) {
+        for (int i = 0; i <= 6; i++) {
+            int size = manager.getPiles()[i].getPile().size();
+            for (int a = 0; a <= size - 1; a++) {
+                if (manager.getPiles()[i].getPile().get(a).toString().
+                        equals(card.toString())) {
+                    System.out.println(manager.getPiles()[i].getPile().get(a).toString());
+                    System.out.println(a);
+                    manager.getPiles()[i].getChildren().remove(a+1);
+
+                    this.manager.getPiles()[this.index].getChildren().add(card);
+                    this.manager.getPiles()[this.index].getPile().push(
+                            this.manager.getPiles()[i].getPile().pop());
+                    manager.changeSideUpdate();
+                    return;
+                }
+            }
+        }
+    }
 }

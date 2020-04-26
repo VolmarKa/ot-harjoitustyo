@@ -41,7 +41,9 @@ public class UserInterface extends Application {
         mainPane.add(UpperRightPiles, 3, 0, 2, 1);
         mainPane.setHgap(10);
         HBox middlePiles = new HBox();
+        
         MiddlePileManager a = new MiddlePileManager(deck);
+           
         middlePiles.getChildren().addAll(a.getPiles());
         mainPane.add(middlePiles, 0, 3, 2, 1);
         //mainPane.setGridLinesVisible(true);
