@@ -80,8 +80,8 @@ public class CardProperties {
         }
     }
     
-    public void makeMovable(MiddlePileManager manager){
-        this.mv = new Movement(this.card, manager);
+    public void makeMovable(MiddlePileManager manager, UpperLeftPile upper){
+        this.mv = new Movement(this.card, manager, upper);
     }
 
 }

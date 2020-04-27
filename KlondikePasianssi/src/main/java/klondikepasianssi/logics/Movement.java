@@ -11,13 +11,17 @@ import klondikepasianssi.gui.Card.Suit;
 
 public class Movement {
 
+    private int x = 1;
+    private double y;
     private int index;
     private final Card card;
-    private MiddlePileManager manager;
+    private final MiddlePileManager manager;
+    private final UpperLeftPile upperLeft;
 
-    public Movement(Card card, MiddlePileManager m) {
+    public Movement(Card card, MiddlePileManager m, UpperLeftPile u) {
         this.card = card;
         this.manager = m;
+        this.upperLeft = u;
 
         this.card.setOnDragDetected(e -> {
             dragDetected(e);
@@ -67,26 +71,23 @@ public class Movement {
     private void dragDropped(DragEvent event) {
 
         Dragboard db = event.getDragboard();
-
-        if (db.hasString() && db.hasImage()) {
-
+        Card target = (Card) event.getGestureTarget();
+        if (db.hasString() && db.hasImage() && this.card.getFaceUp()
+                && checkIfInTheSamePile(event)) {
+            y = target.getTranslateY();
             String[] properties = db.getString().split(" ");
             Image image = db.getImage();
             Suit suit = card.getCardProperties().checkSuit(properties[0]);
             Card cardd = new Card(suit, image, Integer.valueOf(properties[1]));
-            cardd.getCardProperties().makeMovable(manager);
-            for (int i = 0; i <= 6; i++) {
-                int size = manager.getPiles()[i].getPile().size();
-                for (int a = 0; a <= size - 1; a++) {
-                    if (manager.getPiles()[i].getPile().get(a).toString().equals(event.
-                            getGestureTarget().toString())) {
-                        this.index = i;
-
-                    }
+            cardd.getCardProperties().makeMovable(manager, upperLeft);
+            if (!cardd.toString().equals(event.getGestureTarget().toString())
+                    && isTopCard(target)) {              
+                upperLeft.wholedeck();
+                if (upperLeft.isInThePile(cardd)) {
+                    deleteAndAddOriginalCard2();
+                } else {
+                    deleteAndAddOriginalCard(cardd);
                 }
-            }
-            if (!cardd.toString().equals(event.getGestureTarget().toString())) {
-                deleteAndAddOriginalCard(cardd);
             }
             event.setDropCompleted(true);
         } else {
@@ -112,17 +113,89 @@ public class Movement {
             for (int a = 0; a <= size - 1; a++) {
                 if (manager.getPiles()[i].getPile().get(a).toString().
                         equals(card.toString())) {
-                    System.out.println(manager.getPiles()[i].getPile().get(a).toString());
-                    System.out.println(a);
-                    manager.getPiles()[i].getChildren().remove(a+1);
+                    if (a < size - 1) {
+                        System.out.println("a on " + a);
+                        for (int z = a; z <= size - 1; z++) {
+                            System.out.println("alkuperäisen pinon koko on " + manager.getPiles()[i].getPile().size() + " ja poistettava on " + manager.getPiles()[i].getPile().get(a));
+                            Card d = manager.getPiles()[i].getPile().get(a);
+                            manager.getPiles()[i].getChildren().remove(a + 1);
+                            manager.getPiles()[this.index].getPile().push(
+                                    manager.getPiles()[i].getPile().remove(a));
+                            System.out.println("target koko " + manager.getPiles()[index].getPile().size()
+                                    + " ja ensimmäinen kortti on " + manager.getPiles()[index].getPile().peek().toString());
+                            manager.getPiles()[index].getChildren().add(d);
+                            d.setTranslateY(y + x * 20);
+                            x++;
 
-                    this.manager.getPiles()[this.index].getChildren().add(card);
-                    this.manager.getPiles()[this.index].getPile().push(
-                            this.manager.getPiles()[i].getPile().pop());
+                        }
+
+                    } else {
+                        manager.getPiles()[i].getChildren().remove(a + 1);
+                        this.manager.getPiles()[this.index].getChildren().add(card);
+                        this.manager.getPiles()[this.index].getPile().push(
+                                this.manager.getPiles()[i].getPile().pop());
+                        card.setTranslateY(y + 20);
+
+                    }
                     manager.changeSideUpdate();
+                    x = 1;
                     return;
                 }
             }
         }
     }
+
+    private boolean checkIfInTheSamePile(DragEvent event) {
+        boolean same = false;
+        boolean same2 = false;
+        Card targetCard = (Card) event.getGestureTarget();
+        Card sourceCard = (Card) event.getGestureSource();
+
+        for (int i = 0; i <= 6; i++) {
+            int size = manager.getPiles()[i].getPile().size();
+            for (int a = 0; a <= size - 1; a++) {
+                if (manager.getPiles()[i].getPile().get(a).toString()
+                        .equals(targetCard.toString())) {
+                    same = true;
+                }
+
+                if (manager.getPiles()[i].getPile().get(a).toString()
+                        .equals(sourceCard.toString())) {
+                    same2 = true;
+                }
+
+                if (same2 && same) {
+                    return false;
+                }
+            }
+            same = false;
+            same2 = false;
+        }
+        return true;
+    }
+
+    private boolean isTopCard(Card target) {
+
+        for (int i = 0; i <= 6; i++) {
+            int size = manager.getPiles()[i].getPile().size();
+            for (int a = 0; a <= size - 1; a++) {
+                if (manager.getPiles()[i].getPile().get(a).toString().equals(
+                        target.toString()) && a == size - 1) {
+                    this.index = i;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    private void deleteAndAddOriginalCard2(){
+        Card originalCard = upperLeft.getClickedPile().peek();
+        upperLeft.getChildren().remove(upperLeft.getClickedPile().pop());
+        manager.getPiles()[index].getChildren().add(originalCard);
+        manager.getPiles()[index].getPile().add(originalCard);
+        originalCard.setTranslateY(y + 20);
+        
+    }
+
 }

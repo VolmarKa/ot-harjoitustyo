@@ -33,6 +33,15 @@ public class UserInterface extends Application {
         Deck deck = new Deck();
         Stack<Card> uP = deck.dealUpperPile();
         UpperLeftPile upperleft = new UpperLeftPile(uP);
+        MiddlePileManager a = new MiddlePileManager(deck);
+        for(Card k : uP){
+            k.getCardProperties().makeMovable(a, upperleft);
+        }
+        for(int i = 0; i<=6; i++){
+            for(Card k: a.getPiles()[i].getPile()){
+                k.getCardProperties().makeMovable(a, upperleft);
+            }
+        }
         UpperRightPileManager upperRight = new UpperRightPileManager();
 
         HBox UpperRightPiles = new HBox();
@@ -42,7 +51,7 @@ public class UserInterface extends Application {
         mainPane.setHgap(10);
         HBox middlePiles = new HBox();
         
-        MiddlePileManager a = new MiddlePileManager(deck);
+        
            
         middlePiles.getChildren().addAll(a.getPiles());
         mainPane.add(middlePiles, 0, 3, 2, 1);
