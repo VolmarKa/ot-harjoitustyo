@@ -12,4 +12,4 @@ java -jar klondikepasianssi.jar
 
 ## **Pelaaminen**
 
-Kortteja voi liikutella toistensa päälle yksittäin ja pinoissa painamalla hiiren pohjaan ja raahamalla kortin/pinon toisen kortin/pinon päälle. Peliä ei voi vielä kuitenkaan voittaa, eikä korttien siirtely toimi vielä sääntöjen mukaisesti. Myöskään tyhjille paikoille ei voi laittaa kortteja.
+Vasemmassa yläkulmassa olevaa pakkaa klikkaamalla saa nostettua kortteja yksi kerrallaan. Kortteja voi liikutella toistensa päälle yksittäin ja pinoissa painamalla hiiren pohjaan ja raahamalla kortin/pinon toisen kortin/pinon päälle. Keskimmäisissä pinoissa päällimmäiset kortit saa käännettyä niitä klikkaamalla. Peliä ei voi vielä kuitenkaan voittaa, eikä korttien siirtely toimi vielä sääntöjen mukaisesti. Myöskään tyhjille paikoille ei voi toistaiseksi laittaa kortteja.
