@@ -9,6 +9,9 @@ import javafx.scene.input.TransferMode;
 import klondikepasianssi.gui.Card;
 import klondikepasianssi.gui.Card.Suit;
 
+/**
+ * Luokka vastaa korttien liikuttelusta.
+ */
 public class Movement {
 
     private int x = 1;
@@ -82,7 +85,7 @@ public class Movement {
             cardd.getCardProperties().makeMovable(manager, upperLeft);
             if (!cardd.toString().equals(event.getGestureTarget().toString())
                     && isTopCard(target)) {
-                upperLeft.printWholeDeck();
+                //upperLeft.printWholePile();
                 if (upperLeft.isInThePile(cardd)) {
                     deleteAndAddOriginalCardFromClickedPile();
                 } else {
@@ -114,15 +117,15 @@ public class Movement {
                 if (manager.getPiles()[i].getPile().get(a).toString().
                         equals(card.toString())) {
                     if (a < size - 1) {
-                        System.out.println("a on " + a);
+                        //System.out.println("a on " + a);
                         for (int z = a; z <= size - 1; z++) {
-                            System.out.println("alkuperäisen pinon koko on " + manager.getPiles()[i].getPile().size() + " ja poistettava on " + manager.getPiles()[i].getPile().get(a));
+                            //System.out.println("alkuperäisen pinon koko on " + manager.getPiles()[i].getPile().size() + " ja poistettava on " + manager.getPiles()[i].getPile().get(a));
                             Card d = manager.getPiles()[i].getPile().get(a);
                             manager.getPiles()[i].getChildren().remove(a + 1);
                             manager.getPiles()[this.index].getPile().push(
                                     manager.getPiles()[i].getPile().remove(a));
-                            System.out.println("target koko " + manager.getPiles()[index].getPile().size()
-                                    + " ja ensimmäinen kortti on " + manager.getPiles()[index].getPile().peek().toString());
+                            //System.out.println("target koko " + manager.getPiles()[index].getPile().size()
+                            //        + " ja ensimmäinen kortti on " + manager.getPiles()[index].getPile().peek().toString());
                             manager.getPiles()[index].getChildren().add(d);
                             d.setTranslateY(y + x * 20);
                             x++;

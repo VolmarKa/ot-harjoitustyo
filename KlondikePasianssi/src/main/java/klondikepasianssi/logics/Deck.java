@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.Stack;
 import klondikepasianssi.gui.Card;
 
+/**
+ * Luokka vastaa pakkaan liittyvistä toiminnallisuuksista.
+ */
 public class Deck {
 
     private final Stack<Card> deck;
@@ -24,12 +27,21 @@ public class Deck {
 
     }
 
+    /**
+     * Vaihtaa jokaisen kortin kuvapuolen alas pakassa.
+     *
+     */
     public void setEveryFaceDown() {
         for (Card card : this.deck) {
             card.getCardProperties().setFaceDown();
         }
     }
 
+    /**
+     * Jakaa vasemmassa yläkulmassa olevaan pinoon pakasta kortteja.
+     *
+     * @return 24 korttia.
+     */
     public Stack<Card> dealUpperPile() {
 
         Stack<Card> upperPile = new Stack<>();
@@ -39,6 +51,10 @@ public class Deck {
         return upperPile;
     }
 
+    /**
+     * Sekottaa pakan.
+     *
+     */
     public final void shuffle() {
         Collections.shuffle(this.deck);
     }

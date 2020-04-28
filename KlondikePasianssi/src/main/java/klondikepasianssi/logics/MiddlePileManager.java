@@ -5,6 +5,9 @@ import klondikepasianssi.gui.Card;
 import klondikepasianssi.gui.CardImage;
 import klondikepasianssi.gui.MiddlePileView;
 
+/**
+ * Luokka vastaa keskimmäisten pinojen toiminnallisuuksista.
+ */
 public class MiddlePileManager {
 
     private double y;
@@ -12,9 +15,6 @@ public class MiddlePileManager {
     private final MiddlePileView[] piles = new MiddlePileView[7];
 
     public MiddlePileManager(Deck deck) {
-        /*for (Card k : deck.getDeck()) {
-            k.getCardProperties().makeMovable(this);
-        }*/
         init();
         dealCards(deck);
     }
@@ -56,7 +56,11 @@ public class MiddlePileManager {
         }
     }
 
-    //ei toimi jos pakka on "tyhjä"
+    /**
+     * Metodi mahdollistaa jokaisessa pinossa olevan päällimäisen kortin 
+     * puolen vaihtamisen.
+     *
+     */
     public void changeSideUpdate() {
 
         for (int i = 0; i <= 6; i++) {

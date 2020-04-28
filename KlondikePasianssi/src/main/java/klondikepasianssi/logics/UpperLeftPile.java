@@ -7,6 +7,9 @@ import javafx.scene.layout.HBox;
 import klondikepasianssi.gui.Card;
 import klondikepasianssi.gui.CardImage;
 
+/**
+ * Luokka vastaa vasemmassa yläkulmassa olevan pakan ominaisuuksista.
+ */
 public class UpperLeftPile extends HBox {
 
     private int i;
@@ -30,7 +33,7 @@ public class UpperLeftPile extends HBox {
         pileClicked();
     }
 
-    public void checkIndex() {
+    private void checkIndex() {
         if (this.i == deckSize) {
             this.card.setGraphic(ima2);
         }
@@ -39,7 +42,7 @@ public class UpperLeftPile extends HBox {
         }
     }
 
-    public final void pileClicked() {
+    private void pileClicked() {
         card.setOnMouseClicked(event -> {
             checkIndex();
 
@@ -61,6 +64,13 @@ public class UpperLeftPile extends HBox {
         });
     }
 
+    /**
+     * Metodi testaa onko tietty kortti pinossa.
+     *
+     * @param card Testattava kortti.
+     *
+     * @return Palauttaa totuusarvon.
+     */
     public boolean isInThePile(Card card) {
         for (Card k : this.getClickedPile()) {
             if (k.toString().equals(card.toString())) {
@@ -70,7 +80,11 @@ public class UpperLeftPile extends HBox {
         return false;
     }
 
-    public void printWholeDeck() {
+    /**
+     * Metodi tulostaa kaikki pinon jäsenet.
+     *
+     */
+    public void printWholePile() {
         for (Card k : this.getClickedPile()) {
             System.out.println(k.toString());
         }
@@ -85,7 +99,7 @@ public class UpperLeftPile extends HBox {
     }
 
     private void updateDeckSize() {
-        this.deckSize = this.clickedPile.getChancedPileSize();
+        this.deckSize = this.clickedPile.getChangedPileSize();
     }
 
     public int getDeckSize() {

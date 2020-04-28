@@ -5,6 +5,9 @@ import javafx.scene.image.ImageView;
 import klondikepasianssi.gui.CardImage;
 import klondikepasianssi.gui.UpperRightPile;
 
+/**
+ * Luokka vastaa oikean yläkulman pinojen toiminnallisuuksista.
+ */
 public class UpperRightPileManager {
 
     private final UpperRightPile[] piles = new UpperRightPile[4];
@@ -22,7 +25,7 @@ public class UpperRightPileManager {
         }
     }
 
-    public final Button createBottomCard(String imageName, int imageNumber) {
+    private Button createBottomCard(String imageName, int imageNumber) {
         Button button = new Button();
         button.setGraphic(new ImageView(cardImage.createImage(imageName, imageNumber)));
         button.setStyle("-fx-background-color: transparent;");
