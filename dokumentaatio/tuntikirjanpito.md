@@ -14,4 +14,6 @@
 | 18.4  | 3    | Keskimmäisten pinojen aloittaminen  |
 | 19.4  | 3    | Keskimmäisten pinojen luominen ja korttien liikuttelun aloittaminen |
 | 20.4  | 3    | Korttien liikuttamisen työstäminen  |
-| yht   | 40.5 |   |
+| 26.4  | 2    | Korttien liikuttamisen työstäminen  |
+| 27.4  | 5    | Korttien liikuttamisen työstäminen  |
+| yht   | 47.5 |   |
