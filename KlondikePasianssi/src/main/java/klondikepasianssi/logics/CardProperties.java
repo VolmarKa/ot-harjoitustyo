@@ -14,7 +14,7 @@ public class CardProperties {
     private final String idleButton = "-fx-background-color: transparent; "
             + "-fx-padding: 5, 5, 5, 5;";
     private final String enteredButton = "-fx-background-color: transparent; "
-            + "-fx-padding: 6, 4, 4, 6;";
+            + "-    fx-padding: 6, 4, 4, 6;";
     private final Card card;
     private final Image backImage;
     private final CardImage cardImage = new CardImage();
