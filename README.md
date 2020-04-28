@@ -5,6 +5,8 @@ Sovellus on klondike-pasianssi, jota käyttäjät pysytyvät pelaamaan helpoimma
 
 ## **Dokumentaatio**
 
+[Käyttöohje](https://github.com/VolmarKa/otmPasianssi/blob/master/dokumentaatio/K%C3%A4ytt%C3%B6ohje.md)
+
 [Vaatimusmäärittely](https://github.com/VolmarKa/otmPasianssi/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Tuntikirjanpito](https://github.com/VolmarKa/otmPasianssi/blob/master/dokumentaatio/tuntikirjanpito.md)
@@ -47,6 +49,16 @@ Tiedoston [checkstyle.xml](https://github.com/VolmarKa/otmPasianssi/blob/master/
 ```
  mvn jxr:jxr checkstyle:checkstyle
 ```
+
+### JavaDoc
+
+Komennolla
+
+```
+mvn javadoc:javadoc
+```
+
+saadaan generoitua tiedosto *target/site/apidocs/index*, jota voi tarkastella selaimella.
 
 ### Ohjelman suorittaminen
 
