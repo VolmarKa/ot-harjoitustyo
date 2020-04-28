@@ -15,6 +15,8 @@ Sovellus on klondike-pasianssi, jota käyttäjät pysytyvät pelaamaan helpoimma
 
 [Viikko 5](https://github.com/VolmarKa/otmPasianssi/releases/tag/viikko5)
 
+[Viikko 6](https://github.com/VolmarKa/otmPasianssi/releases/tag/Viikko6)
+
 ## **Komentorivitoiminnot**
 
 ### Testaus
