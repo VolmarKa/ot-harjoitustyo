@@ -33,19 +33,13 @@ public class ClickedPile extends StackPane {
         this.pile.push(card);
         //System.out.println(this.pile.size() + " " + this.pile.peek().toString());
     }
-    
-    public Stack<Card> getPile(){
+
+    public Stack<Card> getPile() {
         return this.pile;
     }
 
     public int getChancedPileSize() {
         return this.changedPile.size();
-    }
-
-    public void deletetest() {
-        this.pile.remove(12);
-        this.pile.remove(13);
-        this.pile.remove(21);
     }
 
 }

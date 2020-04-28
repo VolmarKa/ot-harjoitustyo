@@ -23,7 +23,6 @@ public final class Card extends Button {
         this.rank = imageNumber;
         this.image = cardImage.createImage(imageName, imageNumber);
         cardproperties.init(this.image);
-        //cardproperties.effect();
 
     }
 
@@ -66,10 +65,6 @@ public final class Card extends Button {
 
     public CardProperties getCardProperties() {
         return this.cardproperties;
-    }
-
-    public void sas(Card card) {
-
     }
 
 }

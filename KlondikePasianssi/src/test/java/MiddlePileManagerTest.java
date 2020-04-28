@@ -26,7 +26,7 @@ public class MiddlePileManagerTest {
     @Test
     public void dealCardsWorks() {
         for (int i = 0; i <= 6; i++) {
-            assertEquals(i + 1, this.manager.getPiles()[i].getChildren().size());
+            assertEquals(i + 1, this.manager.getPiles()[i].getPile().size());
 
         }
     }

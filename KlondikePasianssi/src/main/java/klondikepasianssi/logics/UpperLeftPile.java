@@ -60,23 +60,23 @@ public class UpperLeftPile extends HBox {
             }
         });
     }
-    
-    public boolean isInThePile(Card card){
-        for(Card k: this.getClickedPile()){
-            if(k.toString().equals(card.toString())){
+
+    public boolean isInThePile(Card card) {
+        for (Card k : this.getClickedPile()) {
+            if (k.toString().equals(card.toString())) {
                 return true;
             }
         }
         return false;
     }
-    
-    public void wholedeck(){
-        for(Card k: this.getClickedPile()){
+
+    public void printWholeDeck() {
+        for (Card k : this.getClickedPile()) {
             System.out.println(k.toString());
         }
     }
-    
-    public Stack<Card> getClickedPile(){
+
+    public Stack<Card> getClickedPile() {
         return this.clickedPile.getPile();
     }
 

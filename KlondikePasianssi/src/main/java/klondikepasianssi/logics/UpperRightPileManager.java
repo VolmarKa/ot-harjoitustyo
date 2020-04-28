@@ -7,8 +7,8 @@ import klondikepasianssi.gui.UpperRightPile;
 
 public class UpperRightPileManager {
 
-    private UpperRightPile[] piles = new UpperRightPile[4];
-    private CardImage cardImage = new CardImage();
+    private final UpperRightPile[] piles = new UpperRightPile[4];
+    private final CardImage cardImage = new CardImage();
 
     public UpperRightPileManager() {
         init();

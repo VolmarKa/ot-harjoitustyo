@@ -81,10 +81,10 @@ public class Movement {
             Card cardd = new Card(suit, image, Integer.valueOf(properties[1]));
             cardd.getCardProperties().makeMovable(manager, upperLeft);
             if (!cardd.toString().equals(event.getGestureTarget().toString())
-                    && isTopCard(target)) {              
-                upperLeft.wholedeck();
+                    && isTopCard(target)) {
+                upperLeft.printWholeDeck();
                 if (upperLeft.isInThePile(cardd)) {
-                    deleteAndAddOriginalCard2();
+                    deleteAndAddOriginalCardFromClickedPile();
                 } else {
                     deleteAndAddOriginalCard(cardd);
                 }
@@ -188,14 +188,14 @@ public class Movement {
         }
         return false;
     }
-    
-    private void deleteAndAddOriginalCard2(){
+
+    private void deleteAndAddOriginalCardFromClickedPile() {
         Card originalCard = upperLeft.getClickedPile().peek();
         upperLeft.getChildren().remove(upperLeft.getClickedPile().pop());
         manager.getPiles()[index].getChildren().add(originalCard);
         manager.getPiles()[index].getPile().add(originalCard);
         originalCard.setTranslateY(y + 20);
-        
+
     }
 
 }

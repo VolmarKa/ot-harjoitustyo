@@ -6,6 +6,9 @@ import klondikepasianssi.gui.Card;
 import klondikepasianssi.gui.Card.Suit;
 import klondikepasianssi.gui.CardImage;
 
+/**
+ * Luokka vastaa korttien ominaisuuksiin liittyvist ä toiminnoista.
+ */
 public class CardProperties {
 
     private final String idleButton = "-fx-background-color: transparent; "
@@ -39,7 +42,6 @@ public class CardProperties {
         this.card.setFaceUp();
     }
 
-    //tässä on joku outo ongelma. Se taitaa yrittää vaihtaa puolta vaikka faceUp
     public void changeSide() {
         ImageView ima2 = new ImageView(card.getImage());
         if (!card.getFaceUp()) {
@@ -51,7 +53,7 @@ public class CardProperties {
         }
     }
 
-    public void effect() {
+    /*public void effect() {
         if (card.getFaceUp()) {
             card.setOnMouseEntered(event -> {
                 card.setStyle(enteredButton);
@@ -61,8 +63,7 @@ public class CardProperties {
                 card.setStyle(idleButton);
             });
         }
-    }
-
+    }*/
     public Suit checkSuit(String a) {
         if (a.equals("CLUBS")) {
             return Suit.CLUBS;
@@ -79,8 +80,8 @@ public class CardProperties {
             return Suit.HEARTS;
         }
     }
-    
-    public void makeMovable(MiddlePileManager manager, UpperLeftPile upper){
+
+    public void makeMovable(MiddlePileManager manager, UpperLeftPile upper) {
         this.mv = new Movement(this.card, manager, upper);
     }
 
