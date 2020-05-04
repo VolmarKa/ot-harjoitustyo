@@ -3,7 +3,6 @@ package klondikepasianssi.logics;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import klondikepasianssi.gui.Card;
-import klondikepasianssi.gui.Card.Suit;
 import klondikepasianssi.gui.CardImage;
 
 /**
@@ -13,8 +12,6 @@ public class CardProperties {
 
     private final String idleButton = "-fx-background-color: transparent; "
             + "-fx-padding: 5, 5, 5, 5;";
-    private final String enteredButton = "-fx-background-color: transparent; "
-            + "-    fx-padding: 6, 4, 4, 6;";
     private final Card card;
     private final Image backImage;
     private final CardImage cardImage = new CardImage();
@@ -61,46 +58,34 @@ public class CardProperties {
     public void changeSide() {
         ImageView ima2 = new ImageView(card.getImage());
         if (!card.getFaceUp()) {
+            
             card.setOnMouseClicked(event -> {
                 card.setGraphic(ima2);
                 card.setFaceUp();
+                makeClickable();
             });
         }
     }
-
-    /**
-     * Metodi kertoo, mikä merkkijonoa vastaava maa on.
-     *
-     * @param suitAsString Käyttäjän antama syöte.
-     *
-     * @return merkkijonoa vastaan maan.
-     */
-    public Suit checkSuit(String suitAsString) {
-        if (suitAsString.equals("CLUBS")) {
-            return Suit.CLUBS;
-        }
-
-        if (suitAsString.equals("SPADES")) {
-            return Suit.SPADES;
-        }
-
-        if (suitAsString.equals("DIAMONDS")) {
-            return Suit.DIAMONDS;
-
-        } else {
-            return Suit.HEARTS;
-        }
+    
+    private void makeClickable(){
+        getMovement().makeClickableAfterSideChange();
     }
 
     /**
      * Metodi tekee kortista liikuteltavan.
      *
      * @param manager Keskimmäisten pinojen toiminnasta vastaava luokka.
-     * @param upper Vasemassa yläkulmassa olevan pinon toiminnasta vastaava
-     * luokka.
+     * @param upperLeftManager Vasemassa yläkulmassa olevan pinon toiminnasta
+     * vastaava luokka.
+     * @param upperRightManager Oikeassa yläkulmassa olevien pinojen toiminnasta
+     * vastaava luokka
      */
-    public void makeMovable(MiddlePileManager manager, UpperLeftPile upper) {
-        this.mv = new Movement(this.card, manager, upper);
+    public void makeMovable(MiddlePileManager manager, UpperLeftPileManager upperLeftManager, UpperRightPileManager upperRightManager) {
+        this.mv = new Movement(this.card, manager, upperLeftManager, upperRightManager);
+    }
+    
+    public Movement getMovement(){
+        return this.mv;
     }
 
 }

@@ -21,7 +21,7 @@ public class CardImage {
     }
 
     public Image bottomImage() {
-        return createImage("bottom", 1);
+        return createImage("bottom", 19);
     }
 
     public Button createButton(String imageName, int imageNumber) {

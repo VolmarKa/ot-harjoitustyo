@@ -1,9 +1,8 @@
 package klondikepasianssi.logics;
 
-import javafx.scene.control.Button;
 import klondikepasianssi.gui.Card;
-import klondikepasianssi.gui.CardImage;
 import klondikepasianssi.gui.MiddlePileView;
+import klondikepasianssi.gui.Card.Suit;
 
 /**
  * Luokka vastaa keskimmäisten pinojen toiminnallisuuksista.
@@ -26,13 +25,15 @@ public class MiddlePileManager {
     }
 
     private void dealCards(Deck deck) {
-        CardImage c = new CardImage();
+
         deck.setEveryFaceDown();
         this.b = 1;
         for (int a = 0; a <= 6; a++) {
-            Button button = c.createButton("bottom", 1);
-            this.piles[a].getChildren().add(button);
-            button.setTranslateY(y + 10);
+            Card bottom = new Card(Suit.NEUTRAL, "bottom", 19);
+            bottom.setRank(a + 19);
+            this.piles[a].getChildren().add(bottom);
+            this.piles[a].getPile().push(bottom);
+            bottom.setTranslateY(y + 10);
             for (int i = 1; i <= b; i++) {
 
                 Card card = deck.getDeck().pop();
@@ -57,8 +58,8 @@ public class MiddlePileManager {
     }
 
     /**
-     * Metodi mahdollistaa jokaisessa pinossa olevan päällimäisen kortin 
-     * puolen vaihtamisen.
+     * Metodi mahdollistaa jokaisessa pinossa olevan päällimäisen kortin puolen
+     * vaihtamisen.
      *
      */
     public void changeSideUpdate() {

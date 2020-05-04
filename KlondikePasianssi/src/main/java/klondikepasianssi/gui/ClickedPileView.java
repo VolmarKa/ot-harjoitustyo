@@ -2,9 +2,9 @@ package klondikepasianssi.gui;
 
 import javafx.scene.layout.StackPane;
 
-public class UpperRightPile extends StackPane {
+public class ClickedPileView extends StackPane {
 
-    public UpperRightPile() {
+    public ClickedPileView() {
 
     }
 }

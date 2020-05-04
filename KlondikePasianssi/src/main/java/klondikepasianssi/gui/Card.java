@@ -7,12 +7,12 @@ import javafx.scene.image.Image;
 public final class Card extends Button {
 
     public enum Suit {
-        CLUBS, DIAMONDS, SPADES, HEARTS;
+        CLUBS, DIAMONDS, SPADES, HEARTS, NEUTRAL;
     }
 
     private final CardProperties cardproperties;
     private final Suit suit;
-    private final int rank;
+    private int rank;
     private final CardImage cardImage = new CardImage();
     private boolean faceUp = true;
     private final Image image;
@@ -24,14 +24,6 @@ public final class Card extends Button {
         this.image = cardImage.createImage(imageName, imageNumber);
         cardproperties.init(this.image);
 
-    }
-
-    public Card(Suit suit, Image imagee, int rankk) {
-        cardproperties = new CardProperties(this);
-        this.suit = suit;
-        this.image = imagee;
-        this.rank = rankk;
-        cardproperties.init(this.image);
     }
 
     public Image getImage() {
@@ -56,6 +48,10 @@ public final class Card extends Button {
 
     public boolean getFaceUp() {
         return this.faceUp;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     @Override

@@ -43,6 +43,7 @@ public class ClickedPile extends StackPane {
      */
     public void addCard(Card card) {
         this.pile.push(card);
+        
         //System.out.println(this.pile.size() + " " + this.pile.peek().toString());
     }
 

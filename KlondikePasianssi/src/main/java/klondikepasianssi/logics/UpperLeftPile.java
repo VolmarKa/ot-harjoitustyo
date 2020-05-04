@@ -12,7 +12,7 @@ import klondikepasianssi.gui.CardImage;
  */
 public class UpperLeftPile extends HBox {
 
-    private int i;
+    protected int i;
     private int deckSize;
     private final CardImage cardImage = new CardImage();
     private final ImageView ima1 = new ImageView(cardImage.backOfTheCard());
@@ -94,10 +94,6 @@ public class UpperLeftPile extends HBox {
         return this.clickedPile.getPile();
     }
 
-    public Button getCard() {
-        return this.card;
-    }
-
     private void updateDeckSize() {
         this.deckSize = this.clickedPile.getChangedPileSize();
     }
@@ -106,8 +102,20 @@ public class UpperLeftPile extends HBox {
         return this.deckSize;
     }
 
+    public Button getCard() {
+        return this.card;
+    }
+
     public Stack<Card> getPile() {
         return this.upperPile;
+    }
+
+    public ImageView getBackOfTheCard() {
+        return ima1;
+    }
+
+    public ImageView getBottomImage() {
+        return ima2;
     }
 
 }
