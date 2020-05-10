@@ -7,4 +7,7 @@
 <suppressions>
     <suppress files="klondikepasianssi.gui.UserInterface.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="klondikepasianssi.Main.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="klondikepasianssi.gui.GameView" checks="[a-zA-Z0-9]*"/>
+    <suppress files="klondikepasianssi.gui.GameScreen" checks="[a-zA-Z0-9]*"/>
+    <suppress files="klondikepasianssi.gui.MainMenu" checks="[a-zA-Z0-9]*"/>
 </suppressions>
