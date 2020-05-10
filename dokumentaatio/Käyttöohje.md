@@ -14,7 +14,7 @@ java -jar klondikepasianssi.jar
 
 Alkunäkymästä pääsee pelaamaan painamalla play painiketta.
 
-Pelinäktmän vasemmassa yläkulmassa olevaa pakkaa klikkaamalla saa nostettua kortteja yksi kerrallaan. Kortteja voi liikutella toistensa päälle yksittäin ja pinoissa painamalla hiiren pohjaan ja raahamalla kortin/pinon toisen kortin/pinon päälle. Keskimmäisissä pinoissa päällimmäiset kortit saa käännettyä niitä klikkaamalla. Kun kunkin maan kortit saa kerättyä loppupinoihin oikeassa järjestyksessä, ei liikkeitä voi enää tehdä ja pelin voittaa. 
+Pelinäkymän vasemmassa yläkulmassa olevaa pakkaa klikkaamalla saa nostettua kortteja yksi kerrallaan. Kortteja voi liikutella toistensa päälle yksittäin ja pinoissa painamalla hiiren pohjaan ja raahamalla kortin/pinon toisen kortin/pinon päälle. Keskimmäisissä pinoissa päällimmäiset kortit saa käännettyä niitä klikkaamalla. Kun kunkin maan kortit saa kerättyä loppupinoihin oikeassa järjestyksessä, ei liikkeitä voi enää tehdä ja pelin voittaa. 
 
 
 
