@@ -15,4 +15,4 @@ aikana kuten kumoamisnäppäimen.
 ## **Sovellukseen jääneet laatuongelmat**
 
 Pelikorttien toteuttamisen olisi voinut toteuttaa varmasti helpomminkin kuin nappeina. Lisäksi ohjelmassa on sovelluslogiikan puolella
-muutamia metodeja, joita en ehtyinyt pilkkoa pienemmiksi ja toisteista koodia voi mahdollisesti löytyä jostain osin ohjelmaa.
+muutamia metodeja, joita en ehtyinyt pilkkoa pienemmiksi ja toisteista koodia voi mahdollisesti löytyä jostain osin ohjelmaa. Myöskin Sovelluslogiikan erottaminen käyttöliittymistä tuotti paljon ongelmia.
