@@ -2,7 +2,8 @@
 
 ## **Käyttöliittymä**
 
-Sovellus käynnistyy suoraan peliin eli käyttöliittymä sisältää vain yhden näkymän, joka on tarkoitettu pelaamista varten.
+Sovellus käynnistyy alkunäkymään ja peliinäkymään pääsee play nappia klikkaamalla. Pelissä on siis kaksi eri näkymää, joista toinen on tarkoitettu pelaamiseen ja toinen sovelluksesta poistumiseen ja ohjeen lukemiseen.
+
 ## **Sovelluslogiikka**
 
 
