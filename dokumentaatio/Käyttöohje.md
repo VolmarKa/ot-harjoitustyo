@@ -1,6 +1,6 @@
 # **Käyttöohje**
 
-Lataa tiedosto [klondikepasianssi.jar](https://github.com/VolmarKa/otmPasianssi/releases/tag/Viikko6)
+Lataa tiedosto [klondikepasianssi.jar](https://github.com/VolmarKa/otmPasianssi/releases/tag/Viikko7)
 
 ## **Ohjelman käynnistäminen**
 
