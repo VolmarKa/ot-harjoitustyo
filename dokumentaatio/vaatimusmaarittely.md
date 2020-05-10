@@ -24,6 +24,8 @@ Käyttäjä pystyy pelaamaan perinteistä klondike-pasianssia helpoimmalla vaike
   
 - pelin voittaa, kun pelikortit saa järjestettyä oikein loppupinoihin ✔
 
+- aikamittari ✔
+
 ## **Jatkokehitysideoita**
 
 Jos aika riittää, niin peliin voisi lisätä mm. seuraavia ominaisuuksia:
@@ -31,7 +33,6 @@ Jos aika riittää, niin peliin voisi lisätä mm. seuraavia ominaisuuksia:
 - haastavampia vaikeusasteita
   - pakasta nostetaan kolme korttia kerrallaan ja/tai pakkaa voi kierrättää vain kerran
   
-- aikamittari ✔
 
 - pistemittari
 
