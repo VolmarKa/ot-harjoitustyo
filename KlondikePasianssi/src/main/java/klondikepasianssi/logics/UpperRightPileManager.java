@@ -1,7 +1,5 @@
 package klondikepasianssi.logics;
 
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import klondikepasianssi.gui.Card;
 import klondikepasianssi.gui.CardImage;
 import klondikepasianssi.gui.UpperRightPileView;
@@ -41,15 +39,18 @@ public class UpperRightPileManager {
 
     }
 
-    public boolean isInThePile(Card card) {
+    /**
+     * Metodi tarkistaa onko peli loppunut.
+     * @return Palauttaa totuusarvon pelin loppumisesta.
+     */
+    public boolean gameEnded() {
+        int stacksCompleted = 0;
         for (int i = 0; i <= 3; i++) {
-            for (Card card1 : this.piles[i].getPile()) {
-                if (card.toString().equals(card1.toString())) {
-                    return true;
-                }
+            if (this.piles[i].getPile().size() == 14) {
+                stacksCompleted++;
             }
         }
-        return false;
+        return stacksCompleted == 4;
     }
 
     public UpperRightPileView[] getPiles() {

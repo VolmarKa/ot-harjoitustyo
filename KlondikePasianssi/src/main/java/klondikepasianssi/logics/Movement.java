@@ -1,7 +1,5 @@
 package klondikepasianssi.logics;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
@@ -10,7 +8,7 @@ import javafx.scene.input.TransferMode;
 import klondikepasianssi.gui.Card;
 
 /**
- * Luokka vastaa korttien liikuttelusta.
+ * Luokka vastaa hiiren avulla tehdyistä tapahtumista.
  */
 public final class Movement {
 
@@ -20,18 +18,23 @@ public final class Movement {
     private int sourceIndex;
     private int sourceCard;
     private int targetCard;
+
     private final Card card;
     private final MiddlePileManager manager;
     private final UpperLeftPileManager upperLeft;
     private final UpperRightPileManager upperRight;
     private final ValidateMove validateMove;
+    private ReverseMove reverseMove;
+    private MovementLogics middlePileMovement;
 
-    public Movement(Card card, MiddlePileManager middlePileManager, UpperLeftPileManager upperLeftPileManager, UpperRightPileManager upperRightPileManager) {
-        validateMove = new ValidateMove();
+    public Movement(Card card, MiddlePileManager middlePileManager, UpperLeftPileManager upperLeftPileManager, UpperRightPileManager upperRightPileManager, ValidateMove validateMove, ReverseMove reverseMove) {
+        this.validateMove = validateMove;
+        this.reverseMove = reverseMove;
         this.card = card;
         this.manager = middlePileManager;
         this.upperLeft = upperLeftPileManager;
         this.upperRight = upperRightPileManager;
+        this.middlePileMovement = new MovementLogics(manager, upperLeft, upperRight, reverseMove);
 
         this.card.setOnDragDetected(e -> {
             dragDetected(e);
@@ -94,21 +97,30 @@ public final class Movement {
                 && !checkIfInTheSamePile() && !(sourceIndex > 6 && targetIndex > 6)
                 && targetIndex != -1 && targetIsTopCard()) {
 
-            //System.out.println("pile " + this.sourceIndex + " card " + this.sourceCard + " target pile " + this.targetIndex + " card " + this.targetCard + " size " + manager.getPiles()[targetIndex].getPile().size());
             y = target.getTranslateY();
-            //upperLeft.printWholePile();
+            reverseMove.getSourceIndexes().push(sourceIndex);
+            reverseMove.getTargetIndexes().push(targetIndex);
+            reverseMove.getSourceCards().push(sourceCard);
+            reverseMove.getTargetCards().push(targetCard);
+
             if (sourceIndex == -1) {
-                moveCardFromClickedPile();
+                middlePileMovement.moveCardFromClickedPile(targetIndex, targetCard, y);
 
             } else if (sourceIndex <= 6 && targetIndex > 6) {
-                moveCardToUpperRightPile();
+                if (sourceIsTopCard()) {
+                    middlePileMovement.moveCardToUpperRightPile(sourceIndex, sourceCard, targetIndex, y);
+                }
             } else if (sourceIndex > 6) {
-                moveCardFromUpperRightPile();
+                middlePileMovement.moveCardFromUpperRightPile(sourceIndex, targetIndex, targetCard, y);
+
             } else {
-                moveCardInMiddlePile();
+                middlePileMovement.moveCardInMiddlePile(targetIndex, sourceIndex, targetCard, sourceCard, y, x);
+
             }
 
             event.setDropCompleted(true);
+            upperLeft.getPileClicked().push(2);
+
         } else {
             event.setDropCompleted(false);
 
@@ -126,34 +138,9 @@ public final class Movement {
         }
     }
 
-    private void moveCardInMiddlePile() {
-        int size = manager.getPiles()[sourceIndex].getPile().size();
-        for (int i = sourceCard; i <= size - 1; i++) {
-            //System.out.println("alkuperäisen pinon koko on " + manager.getPiles()[sourceIndex].getPile().size() + " ja poistettava on " + manager.getPiles()[sourceIndex].getPile().get(sourceCard));
-            Card cardd = manager.getPiles()[sourceIndex].getPile().get(sourceCard);
-            manager.getPiles()[sourceIndex].getChildren().remove(sourceCard);
-            manager.getPiles()[targetIndex].getPile().push(manager.getPiles()[sourceIndex].getPile().remove(sourceCard));
-            // System.out.println("target koko " + manager.getPiles()[targetIndex].getPile().size()
-            //                    + " ja ensimmäinen kortti on " + manager.getPiles()[targetIndex].getPile().peek().toString());
-            manager.getPiles()[targetIndex].getChildren().add(cardd);
-            if (manager.getPiles()[targetIndex].getPile().get(targetCard).getSuit() == Card.Suit.NEUTRAL && i == sourceCard) {
-                cardd.setTranslateY(y);
-
-            } else {
-                cardd.setTranslateY(y + x * 20);
-                x++;
-            }
-
-        }
-
-        manager.changeSideUpdate();
-        x = 1;
-
-    }
-
     private boolean checkIfInTheSamePile() {
-        if (targetIndex == sourceIndex && (sourceIndex > 6 && targetIndex > 6
-                || sourceIndex <= 6 && targetIndex <= 6)) {
+        if (targetIndex == sourceIndex && ((sourceIndex > 6 && targetIndex > 6)
+                || (sourceIndex <= 6 && targetIndex <= 6))) {
             return true;
         }
         return false;
@@ -172,83 +159,10 @@ public final class Movement {
         if (sourceIndex == -1) {
             return true;
         }
-        if(sourceIndex == -2){
+        if (sourceIndex == -2) {
             return false;
         }
         return sourceCard == manager.getPiles()[sourceIndex].getPile().size() - 1;
-    }
-
-    private void moveCardFromClickedPile() {
-        Card originalCard = upperLeft.getClickedPile().peek();
-        upperLeft.getView().getChildren().remove(upperLeft.getClickedPile().pop());
-        if (targetIndex > 6) {
-            upperRight.getPiles()[targetIndex - 7].getChildren().add(originalCard);
-            upperRight.getPiles()[targetIndex - 7].getPile().add(originalCard);
-        } else {
-            manager.getPiles()[targetIndex].getChildren().add(originalCard);
-            manager.getPiles()[targetIndex].getPile().add(originalCard);
-            if (manager.getPiles()[targetIndex].getPile().get(targetCard).getSuit() == Card.Suit.NEUTRAL) {
-                originalCard.setTranslateY(y);
-            } else {
-                originalCard.setTranslateY(y + 20);
-            }
-        }
-
-    }
-
-    private void moveCardToUpperRightPile() {
-        if (sourceIsTopCard()) {
-            Card originalCard = manager.getPiles()[sourceIndex].getPile().peek();
-            manager.getPiles()[sourceIndex].getChildren().remove(sourceCard);
-            upperRight.getPiles()[targetIndex - 7].getPile().push(manager.getPiles()[sourceIndex]
-                    .getPile().pop());
-            upperRight.getPiles()[targetIndex - 7].getPile().print();
-            upperRight.getPiles()[targetIndex - 7].getChildren().add(originalCard);
-            originalCard.setTranslateY(y);
-            originalCard.getCardProperties().makeMovable(manager, upperLeft, upperRight);
-            manager.changeSideUpdate();
-        }
-
-    }
-
-    private void moveCardFromUpperRightPile() {
-        Card originalCard = upperRight.getPiles()[sourceIndex - 7].getPile().peek();
-        upperRight.getPiles()[sourceIndex - 7].getChildren().remove(upperRight
-                .getPiles()[sourceIndex - 7].getPile().pop());
-        manager.getPiles()[targetIndex].getPile().push(originalCard);
-        manager.getPiles()[targetIndex].getChildren().add(originalCard);
-        if (manager.getPiles()[targetIndex].getPile().get(targetCard).getSuit() == Card.Suit.NEUTRAL) {
-            originalCard.setTranslateY(y);
-        } else {
-            originalCard.setTranslateY(y + 20);
-        }
-    }
-
-    private void moveOnDoubleClick() {
-        for (int i = 0; i <= 3; i++) {
-            Card topCard = upperRight.getPiles()[i].getPile().peek();
-            if (validateMove.moveToUpperRightPileIsAllowed(this.card, topCard)) {
-                if (sourceIndex == -1) {
-                    upperLeft.getClickedPileManager().getView().getChildren().remove(upperLeft.getClickedPile().pop());
-                    upperRight.getPiles()[i].getPile().add(this.card);
-                    upperRight.getPiles()[i].getChildren().add(this.card);
-                    System.out.println(upperLeft.getClickedPile().peek());
-
-                } else {
-                    manager.getPiles()[sourceIndex].getChildren().remove(manager
-                            .getPiles()[sourceIndex].getPile().pop());
-                    upperRight.getPiles()[i].getChildren().add(this.card);
-                    upperRight.getPiles()[i].getPile().push(this.card);
-                    this.card.setTranslateY(topCard.getTranslateY());
-                    manager.changeSideUpdate();
-                    System.out.println(manager.getPiles()[sourceIndex].getPile().peek());
-                }
-
-                return;
-            }
-
-        }
-
     }
 
     private void findTargetAndSource(DragEvent event) {
@@ -287,45 +201,54 @@ public final class Movement {
                 }
             }
         }
-
-        if (upperLeft.getClickedPile().contains(source)) {
+        if (upperLeft.getPile().contains(source)) {
             this.sourceIndex = -1;
         }
-        if (upperLeft.getClickedPile().contains(target)) {
+        if (upperLeft.getPile().contains(target)) {
             this.targetIndex = -1;
         }
     }
 
-    private void findSourceOnClick() {
+    /**
+     * Metodi löytää klikattavan kortin ja sen pinon hiiren klikkauksella.
+     *
+     */
+    public void findSourceOnClick() {
         for (int i = 0; i <= 6; i++) {
             if (manager.getPiles()[i].getPile().peek().toString().equals(this.card.toString())) {
                 sourceIndex = i;
-                sourceCard = manager.getPiles()[i].getPile().size()-1;
+                sourceCard = manager.getPiles()[i].getPile().size() - 1;
+                if (!manager.getPiles()[sourceIndex].getPile().peek().getHasBeenClicked()) {
+                    upperLeft.getPileClicked().push(3);
+                    reverseMove.getSourceIndexes().push(sourceIndex);
+                }
                 return;
             }
         }
-        if(upperLeft.getClickedPile().contains(this.card)){
+        if (upperLeft.getPile().contains(this.card)) {
             sourceIndex = -1;
             return;
         }
         sourceIndex = -2;
-        
+
     }
 
+    /**
+     * Tekee kortista klikattavan sen puolen vaihtamisen jälkeen.
+     *
+     */
     public void makeClickableAfterSideChange() {
-        this.card.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                findSourceOnClick();
-                if (!sourceIsTopCard()) {
-                    return;
-                }
-                System.out.println(sourceIndex);
-                if (event.getClickCount() == 2) {
-                    moveOnDoubleClick();
-                    System.out.println("yeah");
+        this.card.setOnMouseClicked((MouseEvent event) -> {
 
-                }
+            findSourceOnClick();
+            if (!sourceIsTopCard()) {
+                return;
+            }
+            if (event.getClickCount() == 2) {
+                upperLeft.getPileClicked().push(4);
+                reverseMove.getSourceIndexes().push(sourceIndex);
+                middlePileMovement.moveOnDoubleClick(validateMove, sourceIndex, this.card);
+
             }
         });
     }

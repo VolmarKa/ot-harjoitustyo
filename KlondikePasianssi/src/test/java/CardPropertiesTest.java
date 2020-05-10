@@ -27,11 +27,6 @@ public class CardPropertiesTest {
 
     }
 
-    @Test
-    public void checkSuitWorks(){
-        Card card = this.deck.getDeck().pop();
-        String[] a = card.toString().split(" ");
-        assertEquals(card.getSuit(), card.getCardProperties().checkSuit(a[0]));
-    }
+   
 
 }

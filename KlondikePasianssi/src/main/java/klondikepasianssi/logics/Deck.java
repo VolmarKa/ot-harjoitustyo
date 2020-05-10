@@ -5,7 +5,7 @@ import java.util.Stack;
 import klondikepasianssi.gui.Card;
 
 /**
- * Luokka vastaa pakkaan liittyvistä toiminnallisuuksista.
+ * Luokka vastaa pakan luomisesta ja sen toiminallisuuksista
  */
 public class Deck {
 

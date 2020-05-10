@@ -1,5 +1,6 @@
 package klondikepasianssi.gui;
 
+import javafx.scene.Cursor;
 import klondikepasianssi.logics.CardProperties;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -16,6 +17,10 @@ public final class Card extends Button {
     private final CardImage cardImage = new CardImage();
     private boolean faceUp = true;
     private final Image image;
+    private boolean hasBeenClicked = false;
+    private boolean lastCard = false;
+    private boolean firstCard = false;
+    private boolean tagged = false;
 
     public Card(Suit suit, String imageName, int imageNumber) {
         cardproperties = new CardProperties(this);
@@ -23,6 +28,7 @@ public final class Card extends Button {
         this.rank = imageNumber;
         this.image = cardImage.createImage(imageName, imageNumber);
         cardproperties.init(this.image);
+        this.setCursor(Cursor.HAND);
 
     }
 
@@ -52,6 +58,54 @@ public final class Card extends Button {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    public void setHasBeenClicked() {
+        this.hasBeenClicked = true;
+    }
+
+    public void setHasNotBeenClicked() {
+        this.hasBeenClicked = false;
+    }
+
+    public boolean getHasBeenClicked() {
+        return this.hasBeenClicked;
+    }
+
+    public void setTagged() {
+        this.tagged = true;
+    }
+
+    public void setNotTagged() {
+        this.tagged = false;
+    }
+
+    public boolean getTagged() {
+        return this.tagged;
+    }
+
+    public void setLastCardTrue() {
+        this.lastCard = true;
+    }
+
+    public void setLastCardFalse() {
+        this.lastCard = false;
+    }
+
+    public boolean getLastCard() {
+        return this.lastCard;
+    }
+
+    public void setFirstCardTrue() {
+        this.firstCard = true;
+    }
+
+    public void setFirstCardFalse() {
+        this.firstCard = false;
+    }
+
+    public boolean getFirstCard() {
+        return this.firstCard;
     }
 
     @Override

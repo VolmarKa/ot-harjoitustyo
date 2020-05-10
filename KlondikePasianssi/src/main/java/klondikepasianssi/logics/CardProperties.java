@@ -15,7 +15,7 @@ public class CardProperties {
     private final Card card;
     private final Image backImage;
     private final CardImage cardImage = new CardImage();
-    private Movement mv;
+    private Movement movement;
 
     public CardProperties(Card card) {
         this.card = card;
@@ -58,16 +58,23 @@ public class CardProperties {
     public void changeSide() {
         ImageView ima2 = new ImageView(card.getImage());
         if (!card.getFaceUp()) {
-            
+
             card.setOnMouseClicked(event -> {
                 card.setGraphic(ima2);
                 card.setFaceUp();
+                movement.findSourceOnClick();
+                card.setHasBeenClicked();
                 makeClickable();
             });
         }
     }
-    
-    private void makeClickable(){
+
+    /**
+     * Metodi mahdollistaa kortin klikkaukseen liittyviä toimintoja kyseisen
+     * kortin puolen vaihdon jälkeen.
+     *
+     */
+    private void makeClickable() {
         getMovement().makeClickableAfterSideChange();
     }
 
@@ -79,13 +86,15 @@ public class CardProperties {
      * vastaava luokka.
      * @param upperRightManager Oikeassa yläkulmassa olevien pinojen toiminnasta
      * vastaava luokka
+     * @param validateMove Liikkeiden sääntöjenmukaisuudesta vastaava luokka.
+     * @param reverseMove Liikkeiden peruuttamisesta vastaava luokka.
      */
-    public void makeMovable(MiddlePileManager manager, UpperLeftPileManager upperLeftManager, UpperRightPileManager upperRightManager) {
-        this.mv = new Movement(this.card, manager, upperLeftManager, upperRightManager);
+    public void makeMovable(MiddlePileManager manager, UpperLeftPileManager upperLeftManager, UpperRightPileManager upperRightManager, ValidateMove validateMove, ReverseMove reverseMove) {
+        this.movement = new Movement(this.card, manager, upperLeftManager, upperRightManager, validateMove, reverseMove);
     }
-    
-    public Movement getMovement(){
-        return this.mv;
+
+    public Movement getMovement() {
+        return this.movement;
     }
 
 }

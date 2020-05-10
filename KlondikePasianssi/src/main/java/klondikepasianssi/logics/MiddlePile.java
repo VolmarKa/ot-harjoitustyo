@@ -4,18 +4,16 @@ import java.util.Stack;
 import klondikepasianssi.gui.Card;
 import klondikepasianssi.gui.MiddlePileView;
 
+/**
+ * Luokka sisältää kunkin keskimmäisen pinon kortit.
+ */
 public class MiddlePile extends Stack<Card> {
 
     private MiddlePileView pile;
-    private int top;
 
     public MiddlePile(MiddlePileView pile) {
         this.pile = pile;
-        updateSize();
-    }
 
-    public void updateSize() {
-        this.top = this.pile.getChildren().size();
     }
 
 }
