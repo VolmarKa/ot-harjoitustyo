@@ -16,4 +16,11 @@
 | 20.4  | 3    | Korttien liikuttamisen työstäminen  |
 | 26.4  | 2    | Korttien liikuttamisen työstäminen  |
 | 27.4  | 5    | Korttien liikuttamisen työstäminen  |
-| yht   | 47.5 |   |
+| 3.5   | 3    | Korttien liikuttamisen työstäminen  |
+| 4.5   | 3    | Korttien liikuttamisen työstäminen  |
+| 6.5   | 3    | Visuaalisten ominaisuuksien työstäminen |
+| 7.5   | 3    | Kumoamisnapin työstämistä ja koodin refaktorointia |
+| 8.5   | 4    | Kumoamisnapin työstämistä ja koodin refaktorointia |
+| 9.5   | 8    | Kumoamisnapin työstämistä |
+| 10.5  | 8    | Testausta ja pieniä korjauksia ja lisäyksiä koodiin |
+| yht   | 79.5 |   |
