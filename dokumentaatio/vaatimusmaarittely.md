@@ -18,9 +18,11 @@ Käyttäjä pystyy pelaamaan perinteistä klondike-pasianssia helpoimmalla vaike
 - pelipinoja- ja kortteja voi siirrellä hiiren avulla
   - kortteja voi laittaa päällekkäin ✔
   - pinoja voi laittaa päällekkäin ✔
-  - kortit ja pinot siirtyvät vain jos se on sääntöjen mukaista
+  - kortit ja pinot siirtyvät vain jos se on sääntöjen mukaista ✔
   
-- pelin voittaa, kun pelikortit saa järjestettyä oikein loppupinoihin
+- liikken voi perua painamalla undo nappia ✔
+  
+- pelin voittaa, kun pelikortit saa järjestettyä oikein loppupinoihin ✔
 
 ## **Jatkokehitysideoita**
 
@@ -29,6 +31,8 @@ Jos aika riittää, niin peliin voisi lisätä mm. seuraavia ominaisuuksia:
 - haastavampia vaikeusasteita
   - pakasta nostetaan kolme korttia kerrallaan ja/tai pakkaa voi kierrättää vain kerran
   
-- aika- ja pistemittari
+- aikamittari ✔
+
+- pistemittari
 
 - mahdolliset tilastot pelaajille
