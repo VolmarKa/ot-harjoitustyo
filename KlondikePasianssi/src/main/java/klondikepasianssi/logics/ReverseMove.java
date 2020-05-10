@@ -29,7 +29,7 @@ public class ReverseMove {
      * Peruu viimeiseksi tehdyn liikkeen.
      */
     public void reverseMove() {
-        if (upperLeft.getPileClicked().isEmpty()) {
+        if (upperLeft.getPileClicked().isEmpty() || upperRight.gameEnded()) {
             return;
         }
         int move = (int) upperLeft.getPileClicked().pop();
@@ -51,30 +51,36 @@ public class ReverseMove {
     }
 
     private void reversePileClick() {
-        Card previousCard = upperLeft.getPile().remove(1);
-        Card clickedCard = upperLeft.getPile().remove(0);
-        upperLeft.getPile().push(clickedCard);
-        upperLeft.getPile().add(0, previousCard);
-        if (!upperLeft.getPileClicked().isEmpty() && !upperLeft.getView().getClickedCards().getChildren().contains(previousCard)) {
-            if ((int) upperLeft.getPileClicked().peek() == 1) {
-                upperLeft.getView().getClickedCards().getChildren().add(previousCard);
+        if (upperLeft.getPile().size() >= 2) {
+            Card previousCard = upperLeft.getPile().remove(1);
+            Card clickedCard = upperLeft.getPile().remove(0);
+            upperLeft.getPile().push(clickedCard);
+            upperLeft.getPile().add(0, previousCard);
+            if (!upperLeft.getPileClicked().isEmpty() && !upperLeft.getView().getClickedCards().getChildren().contains(previousCard)) {
+                if ((int) upperLeft.getPileClicked().peek() == 1) {
+                    upperLeft.getView().getClickedCards().getChildren().add(previousCard);
+                }
             }
-        }
-
-        upperLeft.getView().getClickedCards().getChildren().remove(clickedCard);
-        if (clickedCard.getTagged()) {
-            clickedCard.setNotTagged();
-            if (!upperLeft.getView().getClickedCards().getChildren().isEmpty()) {
-                upperLeft.getView().getClickedCards().getChildren().remove(0);
+            upperLeft.getView().getClickedCards().getChildren().remove(clickedCard);
+            if (clickedCard.getTagged()) {
+                clickedCard.setNotTagged();
+                if (!upperLeft.getView().getClickedCards().getChildren().isEmpty()) {
+                    upperLeft.getView().getClickedCards().getChildren().remove(0);
+                }
+                upperLeft.setNotRecycled();
+                for (int i = upperLeft.getPile().size() - 1; i >= 0; i--) {
+                    upperLeft.getView().getClickedCards().getChildren().add(upperLeft.getPile().get(i));
+                }
             }
-            upperLeft.setNotRecycled();
-            for (int i = upperLeft.getPile().size() - 1; i >= 0; i--) {
-                upperLeft.getView().getClickedCards().getChildren().add(upperLeft.getPile().get(i));
+            if (previousCard.getLastCard() && !upperLeft.getView().getClickedCards().getChildren().isEmpty()) {
+                upperLeft.getView().setBottomImage();
+            } else {
+                upperLeft.getView().setBackImage();
             }
-        }
-        if (previousCard.getLastCard() && !upperLeft.getView().getClickedCards().getChildren().isEmpty()) {
-            upperLeft.getView().setBottomImage();
         } else {
+            Card clickedCard = upperLeft.getPile().remove(0);
+            upperLeft.getPile().push(clickedCard);
+            upperLeft.getView().getClickedCards().getChildren().remove(clickedCard);
             upperLeft.getView().setBackImage();
         }
     }
@@ -135,14 +141,16 @@ public class ReverseMove {
             upperLeft.getView().getClickedCards().getChildren().add(cardToMove);
             sourceIndexes.pop();
         } else {
+            Card previousCard = manager.getPiles()[(int) sourceIndexes.peek()].getPile().peek();
             double y = manager.getPiles()[(int) sourceIndexes.peek()].getPile().peek().getTranslateY();
-            boolean previousCardHasfaceUp = manager.getPiles()[(int) sourceIndexes.peek()].getPile().peek().getFaceUp();
             // Nullifies the method changeSideUpdate.
             manager.getPiles()[(int) sourceIndexes.peek()].getPile().peek().setOnMouseClicked(event -> {
 
             });
             manager.getPiles()[(int) sourceIndexes.peek()].getChildren().add(manager.getPiles()[(int) sourceIndexes.pop()].getPile().push(cardToMove));
-            if (previousCardHasfaceUp) {
+            if (previousCard.getSuit() == Card.Suit.NEUTRAL) {
+                cardToMove.setTranslateY(y);
+            } else if (previousCard.getFaceUp()) {
                 cardToMove.setTranslateY(y + 20);
             } else {
                 cardToMove.setTranslateY(y + 10);
@@ -159,6 +167,10 @@ public class ReverseMove {
     }
 
     private void checkIfFirstOrLastCard(Card card) {
+        if (upperLeft.getPile().isEmpty()) {
+            upperLeft.getView().setBottomImage();
+            return;
+        }
         if (card.getFirstCard()) {
             upperLeft.getPile().peek().setFirstCardFalse();
         }

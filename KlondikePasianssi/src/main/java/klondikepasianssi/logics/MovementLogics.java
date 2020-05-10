@@ -17,6 +17,7 @@ public class MovementLogics {
         this.upperLeft = upperLeft;
         this.upperRight = upperRight;
         this.reverseMove = reverseMove;
+
     }
 
     /**
@@ -38,9 +39,7 @@ public class MovementLogics {
             manager.getPiles()[targetIndex].getChildren().add(card);
             if (manager.getPiles()[targetIndex].getPile().get(targetCard).getSuit() == Card.Suit.NEUTRAL && i == sourceCard) {
                 card.setTranslateY(y);
-
             } else {
-                // Case when a move is reversed.
                 if (!manager.getPiles()[targetIndex].getPile().get(targetCard).getFaceUp()) {
                     if (i == sourceCard) {
                         card.setTranslateY(y + 10);
@@ -48,19 +47,14 @@ public class MovementLogics {
                         card.setTranslateY((y + 10) + x * 20);
                         x++;
                     }
-                    // Case when a move is not reversed.
                 } else {
                     card.setTranslateY(y + x * 20);
                     x++;
                 }
-
             }
-
         }
-
         manager.changeSideUpdate();
         x = 1;
-
     }
 
     /**
@@ -93,18 +87,20 @@ public class MovementLogics {
         Card originalCard = upperLeft.getPile().firstElement();
 
         upperLeft.getView().getClickedCards().getChildren().remove(upperLeft.getPile().remove(0));
-        if (originalCard.getFirstCard()) {
-            upperLeft.getPile().peek().setFirstCardTrue();
-        }
-        if (originalCard.getLastCard()) {
-            upperLeft.getPile().get(0).setLastCardTrue();
+        if (!upperLeft.getPile().isEmpty()) {
+            if (originalCard.getFirstCard()) {
+                upperLeft.getPile().peek().setFirstCardTrue();
+            }
+            if (originalCard.getLastCard()) {
+                upperLeft.getPile().get(0).setLastCardTrue();
+            }
         }
         if (targetIndex > 6) {
             upperRight.getPiles()[targetIndex - 7].getChildren().add(originalCard);
             upperRight.getPiles()[targetIndex - 7].getPile().add(originalCard);
         } else {
             manager.getPiles()[targetIndex].getChildren().add(originalCard);
-            manager.getPiles()[targetIndex].getPile().add(originalCard);
+            manager.getPiles()[targetIndex].getPile().push(originalCard);
             if (manager.getPiles()[targetIndex].getPile().get(targetCard).getSuit() == Card.Suit.NEUTRAL) {
                 originalCard.setTranslateY(y);
             } else {
@@ -149,6 +145,8 @@ public class MovementLogics {
         for (int i = 0; i <= 3; i++) {
             Card topCard = upperRight.getPiles()[i].getPile().peek();
             if (validateMove.moveToUpperRightPileIsAllowed(card, topCard)) {
+                upperLeft.getPileClicked().push(4);
+                System.out.println(upperLeft.getPileClicked());
                 int targetIndex = i;
                 reverseMove.getTargetIndexes().push(targetIndex);
                 if (sourceIndex == -1) {

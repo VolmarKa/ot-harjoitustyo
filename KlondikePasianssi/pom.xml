@@ -50,7 +50,7 @@
                 <configuration>
                     <excludes>
                         <exclude>klondikepasianssi/gui/*</exclude>
-                        <exclude>klondikepasianssi/logics/Move*</exclude>
+                        <exclude>klondikepasianssi/logics/Movement.*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

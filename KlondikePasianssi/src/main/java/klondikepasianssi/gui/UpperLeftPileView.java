@@ -8,7 +8,7 @@ import javafx.scene.layout.StackPane;
 import klondikepasianssi.logics.UpperLeftPileManager;
 
 public class UpperLeftPileView extends HBox {
-    
+
     private StackPane clickedCards = new StackPane();
     private final Button card = new Button();
     private final CardImage cardImage = new CardImage();
@@ -42,8 +42,8 @@ public class UpperLeftPileView extends HBox {
     public void setBackImage() {
         card.setGraphic(ima1);
     }
-    
-    public StackPane getClickedCards(){
+
+    public StackPane getClickedCards() {
         return this.clickedCards;
     }
 }

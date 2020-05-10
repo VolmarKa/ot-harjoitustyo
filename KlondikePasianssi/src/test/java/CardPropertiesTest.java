@@ -26,6 +26,11 @@ public class CardPropertiesTest {
         this.deck = new Deck();
 
     }
+    
+    @Test
+    public void test(){
+        
+    }
 
    
 

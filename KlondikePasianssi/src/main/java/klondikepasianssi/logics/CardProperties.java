@@ -88,9 +88,10 @@ public class CardProperties {
      * vastaava luokka
      * @param validateMove Liikkeiden sääntöjenmukaisuudesta vastaava luokka.
      * @param reverseMove Liikkeiden peruuttamisesta vastaava luokka.
+     * @param movementLogics Korttien liikuttelun logiikasta vastaava luokka.
      */
-    public void makeMovable(MiddlePileManager manager, UpperLeftPileManager upperLeftManager, UpperRightPileManager upperRightManager, ValidateMove validateMove, ReverseMove reverseMove) {
-        this.movement = new Movement(this.card, manager, upperLeftManager, upperRightManager, validateMove, reverseMove);
+    public void makeMovable(MiddlePileManager manager, UpperLeftPileManager upperLeftManager, UpperRightPileManager upperRightManager, ValidateMove validateMove, ReverseMove reverseMove, MovementLogics movementLogics) {
+        this.movement = new Movement(this.card, manager, upperLeftManager, upperRightManager, validateMove, reverseMove, movementLogics);
     }
 
     public Movement getMovement() {

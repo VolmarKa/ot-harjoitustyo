@@ -27,14 +27,14 @@ public final class Movement {
     private ReverseMove reverseMove;
     private MovementLogics middlePileMovement;
 
-    public Movement(Card card, MiddlePileManager middlePileManager, UpperLeftPileManager upperLeftPileManager, UpperRightPileManager upperRightPileManager, ValidateMove validateMove, ReverseMove reverseMove) {
+    public Movement(Card card, MiddlePileManager middlePileManager, UpperLeftPileManager upperLeftPileManager, UpperRightPileManager upperRightPileManager, ValidateMove validateMove, ReverseMove reverseMove, MovementLogics movementLogics) {
         this.validateMove = validateMove;
         this.reverseMove = reverseMove;
         this.card = card;
         this.manager = middlePileManager;
         this.upperLeft = upperLeftPileManager;
         this.upperRight = upperRightPileManager;
-        this.middlePileMovement = new MovementLogics(manager, upperLeft, upperRight, reverseMove);
+        this.middlePileMovement = movementLogics;
 
         this.card.setOnDragDetected(e -> {
             dragDetected(e);
@@ -89,10 +89,10 @@ public final class Movement {
         findTargetAndSource(event);
         Card target = (Card) event.getGestureTarget();
         Card source = (Card) event.getGestureSource();
-        if ((!validateMove.SuitsAreDifferent(source, target) && targetIndex <= 6)
+        /*if ((!validateMove.SuitsAreDifferent(source, target) && targetIndex <= 6)
                 || (!validateMove.ranksAreDescending(source, target) && targetIndex <= 6) || (!validateMove.moveToUpperRightPileIsAllowed(source, target) && targetIndex > 6)) {
             return;
-        }
+        }*/
         if (db.hasImage() && this.card.getFaceUp()
                 && !checkIfInTheSamePile() && !(sourceIndex > 6 && targetIndex > 6)
                 && targetIndex != -1 && targetIsTopCard()) {
@@ -103,20 +103,7 @@ public final class Movement {
             reverseMove.getSourceCards().push(sourceCard);
             reverseMove.getTargetCards().push(targetCard);
 
-            if (sourceIndex == -1) {
-                middlePileMovement.moveCardFromClickedPile(targetIndex, targetCard, y);
-
-            } else if (sourceIndex <= 6 && targetIndex > 6) {
-                if (sourceIsTopCard()) {
-                    middlePileMovement.moveCardToUpperRightPile(sourceIndex, sourceCard, targetIndex, y);
-                }
-            } else if (sourceIndex > 6) {
-                middlePileMovement.moveCardFromUpperRightPile(sourceIndex, targetIndex, targetCard, y);
-
-            } else {
-                middlePileMovement.moveCardInMiddlePile(targetIndex, sourceIndex, targetCard, sourceCard, y, x);
-
-            }
+            makeMove();
 
             event.setDropCompleted(true);
             upperLeft.getPileClicked().push(2);
@@ -245,12 +232,31 @@ public final class Movement {
                 return;
             }
             if (event.getClickCount() == 2) {
-                upperLeft.getPileClicked().push(4);
                 reverseMove.getSourceIndexes().push(sourceIndex);
                 middlePileMovement.moveOnDoubleClick(validateMove, sourceIndex, this.card);
 
             }
         });
+    }
+
+    private void makeMove() {
+        if (upperRight.gameEnded()) {
+            return;
+        }
+        if (sourceIndex == -1) {
+            middlePileMovement.moveCardFromClickedPile(targetIndex, targetCard, y);
+
+        } else if (sourceIndex <= 6 && targetIndex > 6) {
+            if (sourceIsTopCard()) {
+                middlePileMovement.moveCardToUpperRightPile(sourceIndex, sourceCard, targetIndex, y);
+            }
+        } else if (sourceIndex > 6) {
+            middlePileMovement.moveCardFromUpperRightPile(sourceIndex, targetIndex, targetCard, y);
+
+        } else {
+            middlePileMovement.moveCardInMiddlePile(targetIndex, sourceIndex, targetCard, sourceCard, y, x);
+
+        }
     }
 
 }

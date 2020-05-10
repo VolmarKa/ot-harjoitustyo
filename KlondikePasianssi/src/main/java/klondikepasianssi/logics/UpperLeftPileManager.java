@@ -28,6 +28,9 @@ public class UpperLeftPileManager {
      */
     public void pileClicked() {
         pileRecycled = false;
+        if (pile.isEmpty() || (pile.size() == 1 && !upperLeftPileView.getClickedCards().getChildren().isEmpty())) {
+            return;
+        }
 
         pileClicked.push(1);
         Card topCard = pile.pop();

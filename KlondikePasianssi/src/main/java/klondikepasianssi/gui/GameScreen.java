@@ -6,25 +6,22 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public class GameScreen extends BorderPane {
 
     private GameView gameView;
-    private TextField time;
+    private Text time;
     private Timer timer;
     private Button menuButton;
     private Button reverseButton;
@@ -60,15 +57,12 @@ public class GameScreen extends BorderPane {
         });
 
         gameScreenButtons.getChildren().add(reverseButton);
-        reverseButton.setMinHeight(43);
 
-        time = new TextField();
-        time.setMaxSize(80, 50);
-        time.setBackground(new Background(new BackgroundImage(new Image("/aika.png"), BackgroundRepeat.SPACE, BackgroundRepeat.SPACE, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
-        time.setAlignment(Pos.CENTER);
-        time.setFont(Font.font("Impact", 15));
+        time = new Text();
+
+        time.setFont(Font.font("Impact", 25));
         gameScreenButtons.getChildren().add(time);
-        time.setEditable(false);
+
         this.setTop(this.gameView);
 
     }
@@ -89,10 +83,11 @@ public class GameScreen extends BorderPane {
                         hoursPassed++;
                     }
                 }
-                try {
-                    time.setText(Integer.toString(hoursPassed) + ":" + Integer.toString(minutesPassed) + ":" + Integer.toString(secondsPassed));
-                } catch (NullPointerException exception) {
-                    System.out.println(" ");
+
+                time.setText(Integer.toString(hoursPassed) + ":" + Integer.toString(minutesPassed) + ":" + Integer.toString(secondsPassed));
+                if (gameView.getUpperRightManager().gameEnded()) {
+                    timer.cancel();
+                    
                 }
             }
         };

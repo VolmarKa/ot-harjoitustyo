@@ -12,24 +12,24 @@ public class UserInterface extends Application {
     public void start(Stage primaryStage) throws Exception {
         GameScreen gameScreen = new GameScreen();
         //gamePane.setGridLinesVisible(true);
-        MainMenu mainPane = new MainMenu();
+        MainMenu mainMenu = new MainMenu();
         Scene gameScene = new Scene(gameScreen, 800, 600);
 
-        mainPane.getPlayButton().setOnMouseClicked(event -> {
+        mainMenu.getPlayButton().setOnMouseClicked(event -> {
             primaryStage.setScene(gameScene);
             gameScreen.createTimer();
 
         });
 
-        mainPane.getExitButton().setOnMouseClicked(event -> {
+        mainMenu.getExitButton().setOnMouseClicked(event -> {
             primaryStage.close();
         });
 
-        Scene mainScene = new Scene(mainPane, 800, 800);
+        Scene mainScene = new Scene(mainMenu, 800, 800);
 
         gameScreen.getMenuButton().setOnMouseClicked(event -> {
             primaryStage.setScene(mainScene);
-            //gameScreen.getTimer().cancel();
+            gameScreen.getTimer().cancel();
 
         });
 
