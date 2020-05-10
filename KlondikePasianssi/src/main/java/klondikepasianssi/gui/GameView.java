@@ -9,11 +9,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import klondikepasianssi.logics.Deck;
-import klondikepasianssi.logics.MiddlePileManager;
 import klondikepasianssi.logics.MovementLogics;
 import klondikepasianssi.logics.ReverseMove;
 import klondikepasianssi.logics.UpperLeftPileManager;
-import klondikepasianssi.logics.UpperRightPileManager;
 import klondikepasianssi.logics.ValidateMove;
 
 public class GameView extends GridPane {

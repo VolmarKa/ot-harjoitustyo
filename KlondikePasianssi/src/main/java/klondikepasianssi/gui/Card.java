@@ -1,7 +1,6 @@
 package klondikepasianssi.gui;
 
 import javafx.scene.Cursor;
-import klondikepasianssi.logics.CardProperties;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 

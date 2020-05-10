@@ -1,7 +1,7 @@
 
 
 import de.saxsys.javafx.test.JfxRunner;
-import klondikepasianssi.logics.UpperRightPileManager;
+import klondikepasianssi.gui.UpperRightPileManager;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;

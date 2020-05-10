@@ -1,8 +1,9 @@
-package klondikepasianssi.logics;
+package klondikepasianssi.gui;
 
 import klondikepasianssi.gui.Card;
 import klondikepasianssi.gui.MiddlePileView;
 import klondikepasianssi.gui.Card.Suit;
+import klondikepasianssi.logics.Deck;
 
 /**
  * Luokka vastaa keskimmäisten pinojen toiminnallisuuksista.

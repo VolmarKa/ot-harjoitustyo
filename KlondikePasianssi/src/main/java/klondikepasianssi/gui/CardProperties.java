@@ -1,9 +1,16 @@
-package klondikepasianssi.logics;
+package klondikepasianssi.gui;
 
+import klondikepasianssi.gui.UpperRightPileManager;
+import klondikepasianssi.gui.MiddlePileManager;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import klondikepasianssi.gui.Card;
 import klondikepasianssi.gui.CardImage;
+import klondikepasianssi.logics.Movement;
+import klondikepasianssi.logics.MovementLogics;
+import klondikepasianssi.logics.ReverseMove;
+import klondikepasianssi.logics.UpperLeftPileManager;
+import klondikepasianssi.logics.ValidateMove;
 
 /**
  * Luokka vastaa korttien ominaisuuksiin liittyvistä toiminnoista.

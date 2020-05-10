@@ -1,5 +1,7 @@
 package klondikepasianssi.logics;
 
+import klondikepasianssi.gui.UpperRightPileManager;
+import klondikepasianssi.gui.MiddlePileManager;
 import java.util.Stack;
 import klondikepasianssi.gui.Card;
 

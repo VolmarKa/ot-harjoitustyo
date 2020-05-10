@@ -1,5 +1,7 @@
 package klondikepasianssi.logics;
 
+import klondikepasianssi.gui.UpperRightPileManager;
+import klondikepasianssi.gui.MiddlePileManager;
 import klondikepasianssi.gui.Card;
 
 /**
@@ -146,7 +148,6 @@ public class MovementLogics {
             Card topCard = upperRight.getPiles()[i].getPile().peek();
             if (validateMove.moveToUpperRightPileIsAllowed(card, topCard)) {
                 upperLeft.getPileClicked().push(4);
-                System.out.println(upperLeft.getPileClicked());
                 int targetIndex = i;
                 reverseMove.getTargetIndexes().push(targetIndex);
                 if (sourceIndex == -1) {

@@ -1,4 +1,4 @@
-package klondikepasianssi.logics;
+package klondikepasianssi.gui;
 
 import klondikepasianssi.gui.Card;
 import klondikepasianssi.gui.CardImage;
@@ -41,6 +41,7 @@ public class UpperRightPileManager {
 
     /**
      * Metodi tarkistaa onko peli loppunut.
+     *
      * @return Palauttaa totuusarvon pelin loppumisesta.
      */
     public boolean gameEnded() {

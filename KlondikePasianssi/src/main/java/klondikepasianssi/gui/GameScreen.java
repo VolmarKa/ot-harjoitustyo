@@ -16,7 +16,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 
 public class GameScreen extends BorderPane {
 
@@ -45,7 +44,6 @@ public class GameScreen extends BorderPane {
         menuButton.setGraphic(new ImageView(new Image("/lopullinenmenu.png")));
         menuButton.setStyle("-fx-background-color: transparent;");
         menuButton.setCursor(Cursor.HAND);
-        this.setRight(menuButton);
         menuButton.setAlignment(Pos.BOTTOM_RIGHT);
 
         reverseButton = new Button();
@@ -56,6 +54,7 @@ public class GameScreen extends BorderPane {
             this.gameView.getReverseMove().reverseMove();
         });
 
+        gameScreenButtons.getChildren().add(menuButton);
         gameScreenButtons.getChildren().add(reverseButton);
 
         time = new Text();
@@ -87,7 +86,7 @@ public class GameScreen extends BorderPane {
                 time.setText(Integer.toString(hoursPassed) + ":" + Integer.toString(minutesPassed) + ":" + Integer.toString(secondsPassed));
                 if (gameView.getUpperRightManager().gameEnded()) {
                     timer.cancel();
-                    
+
                 }
             }
         };

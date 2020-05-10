@@ -1,5 +1,7 @@
 package klondikepasianssi.logics;
 
+import klondikepasianssi.gui.UpperRightPileManager;
+import klondikepasianssi.gui.MiddlePileManager;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
@@ -89,10 +91,10 @@ public final class Movement {
         findTargetAndSource(event);
         Card target = (Card) event.getGestureTarget();
         Card source = (Card) event.getGestureSource();
-        /*if ((!validateMove.SuitsAreDifferent(source, target) && targetIndex <= 6)
+        if ((!validateMove.SuitsAreDifferent(source, target) && targetIndex <= 6)
                 || (!validateMove.ranksAreDescending(source, target) && targetIndex <= 6) || (!validateMove.moveToUpperRightPileIsAllowed(source, target) && targetIndex > 6)) {
             return;
-        }*/
+        }
         if (db.hasImage() && this.card.getFaceUp()
                 && !checkIfInTheSamePile() && !(sourceIndex > 6 && targetIndex > 6)
                 && targetIndex != -1 && targetIsTopCard()) {
