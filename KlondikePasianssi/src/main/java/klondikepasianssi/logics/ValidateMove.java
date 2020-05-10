@@ -18,7 +18,7 @@ public class ValidateMove {
      * @param target Kohdekortti.
      * @return Palauttaa totuusarvon.
      */
-    public boolean SuitsAreDifferent(Card source, Card target) {
+    public boolean suitsAreDifferent(Card source, Card target) {
         if (target.getSuit() == Card.Suit.NEUTRAL) {
             return true;
         }

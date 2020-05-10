@@ -91,7 +91,7 @@ public final class Movement {
         findTargetAndSource(event);
         Card target = (Card) event.getGestureTarget();
         Card source = (Card) event.getGestureSource();
-        if ((!validateMove.SuitsAreDifferent(source, target) && targetIndex <= 6)
+        if ((!validateMove.suitsAreDifferent(source, target) && targetIndex <= 6)
                 || (!validateMove.ranksAreDescending(source, target) && targetIndex <= 6) || (!validateMove.moveToUpperRightPileIsAllowed(source, target) && targetIndex > 6)) {
             return;
         }
