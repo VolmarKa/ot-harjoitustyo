@@ -75,7 +75,7 @@ public class MainMenu extends BorderPane {
         helpText.setText(" Pelipöytä koostuu pakasta, neljästä loppupinosta ja seitsemästä "
                 + "pelipinosta, joissa on jokaisessa 1-7 pelikorttia. Kortteja nostetaan \n pakkaa klikkaamalla"
                 + "ja niitä voi viedä pelipinoihin hiiren avulla klikkaamalla ja raahaamalla. Kortteja voi myös "
-                + "kaksoisklikata, jolloin \n ne menevät suoraan loppupinoihin, jos se on säääntöjen mukaista."
+                + "kaksoisklikata, jolloin \n ne menevät suoraan loppupinoihin, jos se on säääntöjen mukaista. Lisäksi liikkeen voi kumota undo painikkeella."
                 + "\n"
                 + "\n"
                 + "Pelipinoissa kortteja voi siirtää päällekkäin vain, jos niiden värit ovat erit, eli punaisia "
